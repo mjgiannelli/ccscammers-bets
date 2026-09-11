@@ -29,7 +29,7 @@ export function App() {
   return (
     <main className="mx-auto grid max-w-2xl gap-8 px-4 pt-8 pb-16">
       <header>
-        <h1 className="text-2xl font-semibold">Scammers 2026</h1>
+        <h1 className="text-2xl font-semibold">CC Scammers 2026</h1>
         <p className="mt-1 text-sm text-muted">Every side bet on the board. {live} still live.</p>
       </header>
 
