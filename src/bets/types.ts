@@ -16,6 +16,8 @@ export interface HeadToHeadBet {
   against: string[];
   /** `null` while the bet is live. */
   result: 'for' | 'against' | 'void' | null;
+  /** Live numbers drawn on the card. Omit for a bet with nothing to track. */
+  progress?: Progress;
 }
 
 /** A free-for-all: everyone is in for the stake, one person takes the lot. */
@@ -28,6 +30,7 @@ export interface PoolBet {
   players: string[];
   /** The winner's name, `'void'` if it is off, or `null` while it is live. */
   result: string | null;
+  progress?: Progress;
 }
 
 export type Bet = HeadToHeadBet | PoolBet;
@@ -80,4 +83,56 @@ function opposingCount(bet: HeadToHeadBet, name: string): number {
   if (bet.for.includes(name)) return bet.against.length;
   if (bet.against.includes(name)) return bet.for.length;
   return 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Progress — the live picture on each bet card.
+ * ------------------------------------------------------------------ */
+
+/** One competitor's current number. */
+export interface Tracked {
+  /** Short label for the avatar, 1-4 characters. */
+  abbr: string;
+  name: string;
+  value: number;
+}
+
+/**
+ * One end of a see-saw. Usually a single player, but a bet like "DJ Moore beats
+ * either AJ Brown or JSN" puts two players on one end where only the lower of
+ * them actually matters.
+ */
+export interface SeesawSide {
+  players: Tracked[];
+  /**
+   * Which player counts when there is more than one. `min` is the one to reach
+   * when the bet only has to clear the *easier* of two targets.
+   */
+  reduce?: 'min' | 'max';
+  /** Shown under the avatar, e.g. "lower of the two". */
+  note?: string;
+}
+
+export type Progress =
+  /** Ranked standing: the bigger the number, the higher the step. */
+  | { kind: 'podium'; unit: string; players: Tracked[] }
+  /** One number climbing toward a threshold. */
+  | { kind: 'bar'; unit: string; player: Tracked; target: number }
+  /** Two sides weighed against each other. The heavier one sits on the ground. */
+  | { kind: 'seesaw'; unit: string; left: SeesawSide; right: SeesawSide };
+
+/** The player on a see-saw side whose number is actually in play right now. */
+export function effective(side: SeesawSide): Tracked {
+  const [first, ...rest] = side.players;
+  if (rest.length === 0) return first;
+
+  return side.players.reduce((chosen, player) =>
+    side.reduce === 'min'
+      ? player.value < chosen.value
+        ? player
+        : chosen
+      : player.value > chosen.value
+        ? player
+        : chosen,
+  );
 }

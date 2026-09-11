@@ -19,7 +19,26 @@ Node 22.12+ (see `.nvmrc`).
 
 ## Updating after a week
 
-Edit [`src/bets/data.ts`](src/bets/data.ts). Every bet has a `result` field:
+Everything lives in [`src/bets/data.ts`](src/bets/data.ts).
+
+### 1. Type in the new numbers
+
+Each bet has a `progress` block holding the season totals it draws. Update the
+`value` fields and the card redraws itself — nothing is calculated for you.
+
+| `kind`   | Drawn as                                                               | What to update       |
+| -------- | ---------------------------------------------------------------------- | -------------------- |
+| `podium` | Ranked steps with an avatar per person, taller step for a bigger score | `value` per player   |
+| `bar`    | Horizontal fill toward a yardage threshold                             | the player's `value` |
+| `seesaw` | A plank that tips toward whoever is ahead                              | `value` on each side |
+
+A see-saw side can hold two players with `reduce: 'min'`. That is for the
+"DJ Moore beats _either_ AJ Brown or JSN" bet, where only the lower of the two
+has to be cleared — whichever that currently is shows on the avatar.
+
+### 2. Settle anything that finished
+
+Every bet has a `result` field:
 
 | Bet          | Set `result` to | Meaning                                       |
 | ------------ | --------------- | --------------------------------------------- |
@@ -64,9 +83,14 @@ The build is a plain static site in `dist/`.
 ```
 src/
   bets/
-    data.ts      the bets — the only file you edit week to week
-    types.ts     bet shapes and per-person upside/downside
-    ledger.ts    standings: who is up, who is down, what is at risk
-  components/    Standings table and BetCard
-  App.tsx        standings, filters, bet list
+    data.ts        the bets and their numbers — the file you edit week to week
+    types.ts       bet shapes, per-person upside/downside, progress shapes
+    ledger.ts      standings: who is up, who is down, what is at risk
+  components/
+    Standings.tsx  the money table
+    BetCard.tsx    one bet, and which progress view it gets
+    Podium.tsx     ranked steps for the season-points pool
+    ProgressBar.tsx  yardage toward a threshold
+    Seesaw.tsx     two players weighed against each other
+  App.tsx          standings, filters, bet list
 ```

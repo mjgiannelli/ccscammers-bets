@@ -1,4 +1,7 @@
-import { betStatus, pot, type Bet } from '../bets/types';
+import { betStatus, pot, type Bet, type Progress } from '../bets/types';
+import { Podium } from './Podium';
+import { ProgressBar } from './ProgressBar';
+import { Seesaw } from './Seesaw';
 
 const STATUS_BADGE: Record<ReturnType<typeof betStatus>, string> = {
   open: 'text-accent border-(--color-accent)',
@@ -22,13 +25,30 @@ export function BetCard({ bet }: { bet: Bet }) {
         <Sides bet={bet} />
       </p>
 
-      <dl className="mt-3 grid grid-cols-3 gap-2">
+      {bet.progress && (
+        <div className="mt-4 rounded-lg border border-edge bg-ink p-3">
+          <ProgressView progress={bet.progress} />
+        </div>
+      )}
+
+      <dl className="mt-4 grid grid-cols-3 gap-2">
         <Stat label="Each" value={`$${bet.stake.toLocaleString('en-US')}`} />
         <Stat label="Pot" value={`$${pot(bet).toLocaleString('en-US')}`} />
         <Stat label="Result" value={resultLabel(bet)} />
       </dl>
     </li>
   );
+}
+
+function ProgressView({ progress }: { progress: Progress }) {
+  switch (progress.kind) {
+    case 'podium':
+      return <Podium players={progress.players} unit={progress.unit} />;
+    case 'bar':
+      return <ProgressBar player={progress.player} target={progress.target} unit={progress.unit} />;
+    case 'seesaw':
+      return <Seesaw left={progress.left} right={progress.right} unit={progress.unit} />;
+  }
 }
 
 /**
