@@ -1,0 +1,13 @@
+# Vercel auto-detects Vite and needs no config; this file is for Netlify.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Single-page app: every path serves the same document.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -4,5 +4,5 @@
   "printWidth": 100,
   "semi": true,
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./apps/web/src/styles.css"
+  "tailwindStylesheet": "./src/styles.css"
 }

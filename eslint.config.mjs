@@ -12,21 +12,8 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
 
-  // NestJS API: decorators and DI make a few of the default rules noisy.
   {
-    files: ['apps/api/**/*.ts'],
-    languageOptions: {
-      globals: globals.node,
-    },
-    rules: {
-      '@typescript-eslint/no-extraneous-class': 'off',
-      '@typescript-eslint/interface-name-prefix': 'off',
-    },
-  },
-
-  // React web client.
-  {
-    files: ['apps/web/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
       globals: globals.browser,
     },
@@ -37,6 +24,13 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
+  },
+
+  {
+    files: ['*.{ts,mjs}'],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 

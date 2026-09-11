@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens. Declaring them in `@theme` makes them available as Tailwind
+ * utilities too, so `bg-surface` or `text-muted` work like any built-in colour.
+ */
+@theme {
+  --color-ink: #10131a;
+  --color-surface: #181c26;
+  --color-edge: #2a3040;
+  --color-body: #e7eaf0;
+  --color-muted: #97a0b5;
+  --color-accent: #6ea8fe;
+  --color-win: #4ade80;
+  --color-loss: #f87171;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ink font-sans text-body antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-edge bg-surface p-4;
+  }
+
+  .btn {
+    @apply cursor-pointer rounded-lg border border-edge bg-[#232838] px-3.5 py-2 text-sm text-body hover:not-disabled:border-(--color-accent) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--color-accent) disabled:cursor-not-allowed disabled:opacity-55;
+  }
+
+  .btn-active {
+    @apply border-(--color-accent) text-accent;
+  }
+
+  .badge {
+    @apply rounded-full border border-edge px-2.5 py-0.5 text-xs tracking-wider uppercase;
+  }
+}
