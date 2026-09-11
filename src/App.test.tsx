@@ -18,7 +18,7 @@ describe('App', () => {
     render(<App />);
 
     const table = screen.getByRole('table');
-    for (const name of ['Tim Huie', 'Jeff Stafford', 'Uncle Gerry', 'Mark', 'Nubes']) {
+    for (const name of ['Tim', 'Jeff', 'Gerry', 'Mark', 'Nubes']) {
       expect(within(table).getByText(name)).toBeInTheDocument();
     }
   });

@@ -51,9 +51,21 @@ Every bet has a `result` field:
 
 Adding a bet means appending an object to the `BETS` array. Names must be
 spelled identically everywhere or the standings will count someone twice — the
-roster is Tim Huie, Jeff Stafford, Uncle Gerry, Mark, and Nubes.
+roster is Tim, Jeff, Gerry, Mark, and Nubes.
 
 Then commit and push; the deploy picks it up.
+
+## What the cards show
+
+Each card lists everyone with money on the bet and what they are up or down —
+green if they collect, red if they pay. A settled bet says `Final`. A live one
+says `If it ended now` and projects from the current numbers, so it moves as
+you type new values in.
+
+The standings table at the top carries the same idea: "potential payout" is
+the most a person's _live_ bets could still pay them, so a bet drops out of it
+once it settles, and "live payout" is their whole position — settled money plus
+where the open bets currently stand.
 
 ## How the money works
 
@@ -62,9 +74,12 @@ against four has four separate bets running: they collect four stakes if they
 are right, and pay four if they are wrong, while each opponent is only ever in
 for one.
 
-A pool is different. Everyone puts in the stake and a single winner takes the
-lot, so the winner collects from everyone else but each loser is only down
-their own stake.
+A pool is a ladder, not winner-take-all. Everyone pays the stake to each
+person who finishes above them and collects it from each person below, so four
+players at $100 finish **+$300, +$100, -$100, -$300**. Last place pays all
+three; third pays the two above and collects from the one below, netting -$100.
+The rungs are symmetric about the middle, which is what makes them sum to
+zero.
 
 Either way the standings balance to zero across the group, which
 [`src/bets/ledger.test.ts`](src/bets/ledger.test.ts) checks against the real
@@ -85,7 +100,7 @@ src/
   bets/
     data.ts        the bets and their numbers — the file you edit week to week
     types.ts       bet shapes, per-person upside/downside, progress shapes
-    ledger.ts      standings: who is up, who is down, what is at risk
+    ledger.ts      standings, live projections, and the pool ladder
   components/
     Standings.tsx  the money table
     BetCard.tsx    one bet, and which progress view it gets

@@ -14,8 +14,14 @@ export function Standings({ rows }: { rows: Standing[] }) {
           <tr className="text-left text-[0.7rem] tracking-wide text-muted uppercase">
             <th className="pb-2 font-medium">Who</th>
             <th className="pb-2 text-right font-medium">Record</th>
-            <th className="pb-2 text-right font-medium">At risk</th>
-            <th className="pb-2 text-right font-medium">Net</th>
+            <th className="pb-2 text-right font-medium">
+              <span className="block">Potential</span>
+              <span className="block">payout</span>
+            </th>
+            <th className="pb-2 text-right font-medium">
+              <span className="block">Live</span>
+              <span className="block">payout</span>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -26,11 +32,13 @@ export function Standings({ rows }: { rows: Standing[] }) {
                 {row.won}-{row.lost}
                 {row.open > 0 && <span className="ml-1">({row.open} live)</span>}
               </td>
+              {/* What is still on the table to win stays muted; only where the
+                  money actually sits today gets a colour. */}
               <td className="py-2 text-right text-muted tabular-nums">
-                {row.atRisk > 0 ? `$${row.atRisk.toLocaleString('en-US')}` : '—'}
+                {row.open > 0 ? `+$${row.potential.toLocaleString('en-US')}` : '—'}
               </td>
-              <td className={`py-2 text-right font-medium tabular-nums ${netTone(row.net)}`}>
-                {formatMoney(row.net)}
+              <td className={`py-2 text-right font-medium tabular-nums ${netTone(row.live)}`}>
+                {formatMoney(row.live)}
               </td>
             </tr>
           ))}
@@ -39,8 +47,8 @@ export function Standings({ rows }: { rows: Standing[] }) {
 
       {!settled && (
         <p className="mt-3 text-sm text-muted">
-          Nothing has settled yet, so everyone is even. "At risk" is what each person has riding on
-          live bets.
+          Nothing has settled yet. "Potential payout" is the most the season can still pay someone;
+          "live payout" is where they would land if it stopped today.
         </p>
       )}
     </div>

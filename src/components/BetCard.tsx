@@ -1,4 +1,5 @@
-import { betStatus, pot, type Bet, type Progress } from '../bets/types';
+import { betStandings, formatMoney } from '../bets/ledger';
+import { betStatus, type Bet, type Progress } from '../bets/types';
 import { Podium } from './Podium';
 import { ProgressBar } from './ProgressBar';
 import { Seesaw } from './Seesaw';
@@ -15,7 +16,12 @@ export function BetCard({ bet }: { bet: Bet }) {
   return (
     <li className="card">
       <div className="flex items-start justify-between gap-3">
-        <h3 className="text-base font-semibold">{bet.title}</h3>
+        <h3 className="text-base font-semibold">
+          <span>{bet.title}</span>{' '}
+          <span className="font-normal whitespace-nowrap text-muted">
+            - ${bet.stake.toLocaleString('en-US')}
+          </span>
+        </h3>
         <span className={`badge shrink-0 ${STATUS_BADGE[status]}`}>{status}</span>
       </div>
 
@@ -31,11 +37,7 @@ export function BetCard({ bet }: { bet: Bet }) {
         </div>
       )}
 
-      <dl className="mt-4 grid grid-cols-3 gap-2">
-        <Stat label="Each" value={`$${bet.stake.toLocaleString('en-US')}`} />
-        <Stat label="Pot" value={`$${pot(bet).toLocaleString('en-US')}`} />
-        <Stat label="Result" value={resultLabel(bet)} />
-      </dl>
+      <Money bet={bet} />
     </li>
   );
 }
@@ -76,18 +78,49 @@ function Sides({ bet }: { bet: Bet }) {
   );
 }
 
-function resultLabel(bet: Bet): string {
-  if (bet.result === null) return 'Live';
-  if (bet.result === 'void') return 'Void';
-  if (bet.format === 'pool') return bet.result;
-  return bet.result === 'for' ? 'Hit' : 'Missed';
-}
+/** Where every person on the bet currently stands, best off first. */
+function Money({ bet }: { bet: Bet }) {
+  const rows = betStandings(bet);
+  const status = betStatus(bet);
+  const decided = rows.some((row) => row.amount !== 0);
 
-function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div>
-      <dt className="text-[0.7rem] tracking-wide text-muted uppercase">{label}</dt>
-      <dd className="mt-0.5 tabular-nums">{value}</dd>
+    <div className="mt-4">
+      <p className="mb-1.5 text-[0.7rem] tracking-wide text-muted uppercase">
+        {caption(status, decided)}
+      </p>
+
+      {/*
+       * One row across, packing as many people as fit. Only a narrow phone with
+       * five names on a bet drops to a second line.
+       */}
+      <ul
+        className="grid grid-cols-[repeat(auto-fit,minmax(4.5rem,1fr))] gap-x-3 gap-y-2"
+        aria-label="Where each person stands on this bet"
+      >
+        {rows.map((row) => (
+          <li key={row.name} className="text-center">
+            <span className="block truncate text-xs text-muted" title={row.name}>
+              {row.name}
+            </span>
+            <span className={`block text-sm font-semibold tabular-nums ${moneyTone(row.amount)}`}>
+              {formatMoney(row.amount)}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
+}
+
+function caption(status: ReturnType<typeof betStatus>, decided: boolean): string {
+  if (status === 'void') return 'Nobody pays';
+  if (status === 'settled') return 'Final';
+  return decided ? 'If it ended now' : 'Nothing to split yet';
+}
+
+function moneyTone(amount: number): string {
+  if (amount > 0) return 'text-win';
+  if (amount < 0) return 'text-loss';
+  return 'text-muted';
 }

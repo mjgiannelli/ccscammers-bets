@@ -15,25 +15,27 @@ import type { Bet } from './types';
  *      A bet is live while `result` is `null`.
  *
  * Names must match exactly across bets or the standings will count one person
- * twice. The roster is: Tim Huie, Jeff Stafford, Uncle Gerry, Mark, Nubes.
+ * twice. The roster is: Tim, Jeff, Gerry, Mark, Nubes.
  */
 export const BETS: Bet[] = [
   {
     id: 'season-top-points',
     format: 'pool',
-    title: 'Most total points for the season',
-    detail: 'Winner collects $100 from each of the other three.',
+    title: 'Jeff vs Mark vs Gerry vs Tim',
+    detail:
+      'Most total points for the season. Everyone pays $100 to each person who ' +
+      'finishes above them: first collects $300, last is out $300.',
     stake: 100,
-    players: ['Jeff Stafford', 'Mark', 'Uncle Gerry', 'Tim Huie'],
+    players: ['Jeff', 'Mark', 'Gerry', 'Tim'],
     result: null,
     progress: {
       kind: 'podium',
       unit: 'pts',
       players: [
-        { abbr: 'J', name: 'Jeff Stafford', value: 0 },
-        { abbr: 'M', name: 'Mark', value: 0 },
-        { abbr: 'G', name: 'Uncle Gerry', value: 0 },
-        { abbr: 'T', name: 'Tim Huie', value: 0 },
+        { abbr: 'J', name: 'Jeff', value: 15 },
+        { abbr: 'M', name: 'Mark', value: 11 },
+        { abbr: 'G', name: 'Gerry', value: 4 },
+        { abbr: 'T', name: 'Tim', value: 18 },
       ],
     },
   },
@@ -41,32 +43,34 @@ export const BETS: Bet[] = [
     id: 'jeudy-under-1000',
     format: 'headToHead',
     title: 'Jerry Jeudy finishes under 1,000 receiving yards',
-    detail: 'Gerry has the under, Stafford has the over.',
+    detail: 'Gerry has the under, Jeff has the over.',
     stake: 100,
-    for: ['Uncle Gerry'],
-    against: ['Jeff Stafford'],
+    for: ['Gerry'],
+    against: ['Jeff'],
     result: null,
     progress: {
       kind: 'bar',
       unit: 'rec yds',
       player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 0 },
       target: 1000,
+      direction: 'under',
     },
   },
   {
     id: 'tuten-1000-rushing',
     format: 'headToHead',
     title: 'Tuten hits 1,000 rushing yards',
-    detail: 'Gerry says he gets there on the ground. Stafford says no chance.',
+    detail: 'Gerry says he gets there on the ground. Jeff says no chance.',
     stake: 100,
-    for: ['Uncle Gerry'],
-    against: ['Jeff Stafford'],
+    for: ['Gerry'],
+    against: ['Jeff'],
     result: null,
     progress: {
       kind: 'bar',
       unit: 'rush yds',
       player: { abbr: 'TU', name: 'Tuten', value: 0 },
       target: 1000,
+      direction: 'over',
     },
   },
   {
@@ -75,8 +79,8 @@ export const BETS: Bet[] = [
     title: 'DJ Moore outscores either AJ Brown or JSN',
     detail: 'Tim alone against four. He only needs to beat one of the two.',
     stake: 20,
-    for: ['Tim Huie'],
-    against: ['Jeff Stafford', 'Mark', 'Nubes', 'Uncle Gerry'],
+    for: ['Tim'],
+    against: ['Jeff', 'Mark', 'Nubes', 'Gerry'],
     result: null,
     progress: {
       kind: 'seesaw',
@@ -85,8 +89,8 @@ export const BETS: Bet[] = [
       // actually holding down this end of the see-saw.
       left: {
         players: [
-          { abbr: 'AJB', name: 'AJ Brown', value: 0 },
-          { abbr: 'JSN', name: 'JSN', value: 0 },
+          { abbr: 'AJB', name: 'AJ Brown', value: 6 },
+          { abbr: 'JSN', name: 'JSN', value: 33 },
         ],
         reduce: 'min',
         note: 'lower of the two',
@@ -100,8 +104,8 @@ export const BETS: Bet[] = [
     title: 'DJ Moore outscores Chris Olave',
     detail: 'Season-long totals. $25 per person.',
     stake: 25,
-    for: ['Tim Huie'],
-    against: ['Jeff Stafford', 'Uncle Gerry', 'Mark'],
+    for: ['Tim'],
+    against: ['Jeff', 'Gerry', 'Mark'],
     result: null,
     progress: {
       kind: 'seesaw',
@@ -117,7 +121,7 @@ export const BETS: Bet[] = [
     detail: 'Mark has Brooks, Tim has DJ Moore.',
     stake: 25,
     for: ['Mark'],
-    against: ['Tim Huie'],
+    against: ['Tim'],
     result: null,
     progress: {
       kind: 'seesaw',
@@ -132,7 +136,7 @@ export const BETS: Bet[] = [
     title: 'Rico Dowdle outscores Jonathan Brooks',
     detail: 'Gerry has Dowdle, Mark has Brooks.',
     stake: 20,
-    for: ['Uncle Gerry'],
+    for: ['Gerry'],
     against: ['Mark'],
     result: null,
     progress: {
@@ -149,7 +153,7 @@ export const BETS: Bet[] = [
     detail: 'Mark has Diggs, Tim has DJ Moore.',
     stake: 20,
     for: ['Mark'],
-    against: ['Tim Huie'],
+    against: ['Tim'],
     result: null,
     progress: {
       kind: 'seesaw',
@@ -163,11 +167,11 @@ export const BETS: Bet[] = [
     format: 'headToHead',
     title: 'League winner pays the other $1,000',
     detail:
-      'Stafford vs Huie. Outcome already determined by the Football Gods: ' +
+      'Jeff vs Tim. Outcome already determined by the Football Gods: ' +
       "both parties fucking suck and no way they're winning.",
     stake: 1000,
-    for: ['Jeff Stafford'],
-    against: ['Tim Huie'],
+    for: ['Jeff'],
+    against: ['Tim'],
     result: 'void',
   },
 ];

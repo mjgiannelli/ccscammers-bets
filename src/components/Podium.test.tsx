@@ -5,31 +5,55 @@ import { Podium } from './Podium';
 import { ProgressBar } from './ProgressBar';
 
 const PLAYERS = [
-  { abbr: 'J', name: 'Jeff Stafford', value: 80 },
+  { abbr: 'J', name: 'Jeff', value: 80 },
   { abbr: 'M', name: 'Mark', value: 140 },
-  { abbr: 'G', name: 'Uncle Gerry', value: 20 },
+  { abbr: 'G', name: 'Gerry', value: 20 },
 ];
 
+function steps(container: HTMLElement) {
+  return [...container.querySelectorAll('li')].map((step) => {
+    const pedestal = step.querySelector('div') as HTMLElement;
+    return {
+      text: step.textContent ?? '',
+      place: pedestal.querySelector('span')?.textContent ?? '',
+      height: Number(pedestal.style.height.replace('px', '')),
+    };
+  });
+}
+
 describe('Podium', () => {
-  it('ranks by value, highest first', () => {
+  // The winner stands in the middle, not at the left-hand end.
+  it('fans four people out as 4th, 2nd, 1st, 3rd', () => {
+    const four = [...PLAYERS, { abbr: 'T', name: 'Tim', value: 200 }];
+    const { container } = render(<Podium players={four} unit="pts" />);
+
+    expect(steps(container).map((step) => step.place)).toEqual(['4', '2', '1', '3']);
+  });
+
+  it('puts the leader in the middle of a three-way podium', () => {
+    const { container } = render(<Podium players={PLAYERS} unit="pts" />);
+    const rendered = steps(container);
+
+    expect(rendered[1].text).toContain('M');
+    expect(rendered[1].text).toContain('140');
+    expect(rendered.map((step) => step.place)).toEqual(['2', '1', '3']);
+  });
+
+  it('labels every step with its place', () => {
     render(<Podium players={PLAYERS} unit="pts" />);
 
-    const steps = within(screen.getByRole('list')).getAllByRole('listitem');
-    expect(steps[0]).toHaveTextContent('M');
-    expect(steps[0]).toHaveTextContent('140');
-    expect(steps[2]).toHaveTextContent('G');
+    const list = within(screen.getByRole('list'));
+    expect(list.getByText('Mark, 1st with 140 pts')).toBeInTheDocument();
+    expect(list.getByText('Gerry, 3rd with 20 pts')).toBeInTheDocument();
   });
 
   // A taller step for a bigger number is the whole point of the shape.
   it('scales step height with the score', () => {
     const { container } = render(<Podium players={PLAYERS} unit="pts" />);
+    const [jeff, mark, gerry] = steps(container);
 
-    const heights = [...container.querySelectorAll('li > div')].map((step) =>
-      Number((step as HTMLElement).style.height.replace('px', '')),
-    );
-
-    expect(heights[0]).toBeGreaterThan(heights[1]);
-    expect(heights[1]).toBeGreaterThan(heights[2]);
+    expect(mark.height).toBeGreaterThan(jeff.height);
+    expect(jeff.height).toBeGreaterThan(gerry.height);
   });
 
   it('still renders steps before anyone has scored', () => {
@@ -37,11 +61,7 @@ describe('Podium', () => {
       <Podium players={PLAYERS.map((p) => ({ ...p, value: 0 }))} unit="pts" />,
     );
 
-    const heights = [...container.querySelectorAll('li > div')].map((step) =>
-      Number((step as HTMLElement).style.height.replace('px', '')),
-    );
-
-    expect(heights.every((height) => height > 0)).toBe(true);
+    expect(steps(container).every((step) => step.height > 0)).toBe(true);
   });
 });
 

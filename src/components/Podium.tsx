@@ -1,20 +1,28 @@
 import type { Tracked } from '../bets/types';
 
-/** Shortest step, so a podium with nothing scored yet still reads as a podium. */
-const MIN_STEP = 12;
-const MAX_STEP = 64;
+/** Tall enough to hold the place number even when nobody has scored. */
+const MIN_STEP = 28;
+const MAX_STEP = 76;
+
+interface Placed extends Tracked {
+  place: number;
+}
 
 export function Podium({ players, unit }: { players: Tracked[]; unit: string }) {
-  const ranked = [...players].sort((a, b) => b.value - a.value);
+  const ranked: Placed[] = [...players]
+    .sort((a, b) => b.value - a.value)
+    .map((player, index) => ({ ...player, place: index + 1 }));
+
   const best = Math.max(...ranked.map((player) => player.value), 0);
 
   return (
     <ol className="flex items-end justify-center gap-2" aria-label="Podium">
-      {ranked.map((player, index) => {
+      {arrange(ranked).map((player) => {
         // Step height tracks the score itself, not the placing, so a runaway
         // leader actually looks like one.
         const share = best > 0 ? player.value / best : 0;
         const height = MIN_STEP + share * (MAX_STEP - MIN_STEP);
+        const leading = player.place === 1 && best > 0;
 
         return (
           <li key={player.name} className="flex w-full max-w-20 flex-col items-center gap-1">
@@ -24,7 +32,7 @@ export function Podium({ players, unit }: { players: Tracked[]; unit: string }) 
 
             <span
               className={`grid size-9 place-items-center rounded-full border text-sm font-semibold ${
-                index === 0 && best > 0
+                leading
                   ? 'border-(--color-accent) bg-[#232838] text-accent'
                   : 'border-edge bg-[#232838] text-body'
               }`}
@@ -34,11 +42,20 @@ export function Podium({ players, unit }: { players: Tracked[]; unit: string }) 
             </span>
 
             <div
-              className="w-full rounded-t-md border border-b-0 border-edge bg-[#232838]"
+              className={`grid w-full place-items-center rounded-t-md border border-b-0 bg-[#232838] ${
+                leading ? 'border-(--color-accent)' : 'border-edge'
+              }`}
               style={{ height }}
             >
+              <span
+                className={`text-sm font-semibold tabular-nums ${
+                  leading ? 'text-accent' : 'text-muted'
+                }`}
+              >
+                {player.place}
+              </span>
               <span className="sr-only">
-                {player.name}: {player.value} {unit}
+                {player.name}, {ordinal(player.place)} with {player.value} {unit}
               </span>
             </div>
           </li>
@@ -46,4 +63,36 @@ export function Podium({ players, unit }: { players: Tracked[]; unit: string }) 
       })}
     </ol>
   );
+}
+
+/**
+ * Lays a ranked list out as a podium rather than a ladder: the winner stands in
+ * the middle and the rest fan outwards, so four people read 4th, 2nd, 1st, 3rd
+ * from left to right.
+ */
+function arrange<T>(ranked: T[]): T[] {
+  const slots = new Array<T>(ranked.length);
+  const centre = Math.ceil((ranked.length - 1) / 2);
+
+  let left = centre - 1;
+  let right = centre + 1;
+  slots[centre] = ranked[0];
+
+  ranked.slice(1).forEach((player, index) => {
+    // Alternate outwards, starting on the left, and fall back to whichever
+    // side still has room once the other runs out.
+    const goLeft = index % 2 === 0;
+    if ((goLeft && left >= 0) || right >= ranked.length) {
+      slots[left--] = player;
+    } else {
+      slots[right++] = player;
+    }
+  });
+
+  return slots;
+}
+
+function ordinal(place: number): string {
+  const suffix = place === 1 ? 'st' : place === 2 ? 'nd' : place === 3 ? 'rd' : 'th';
+  return `${place}${suffix}`;
 }
