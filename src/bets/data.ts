@@ -33,7 +33,7 @@ export const BETS: Bet[] = [
       unit: 'pts',
       players: [
         { abbr: 'J', name: 'Jeff', value: 15 },
-        { abbr: 'M', name: 'Mark', value: 11 },
+        { abbr: 'M', name: 'Mark', value: 17 },
         { abbr: 'G', name: 'Gerry', value: 4 },
         { abbr: 'T', name: 'Tim', value: 18 },
       ],
