@@ -1,0 +1,44 @@
+{
+  "name": "ccscammers-bets",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Monorepo for the ccscammers-bets platform: React web client, NestJS API, RavenDB storage.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @ccscammers/shared && npm run build -w @ccscammers/api && npm run build -w @ccscammers/web",
+    "build:shared": "npm run build -w @ccscammers/shared",
+    "dev": "npm run build:shared && concurrently -k -n api,web -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev -w @ccscammers/api",
+    "dev:web": "npm run dev -w @ccscammers/web",
+    "test": "npm run build:shared && npm run test --workspaces --if-present",
+    "typecheck": "npm run build:shared && npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "rimraf \"{apps,packages}/*/{dist,node_modules,.turbo}\" node_modules",
+    "raven:up": "docker compose up -d ravendb",
+    "raven:down": "docker compose down"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.6",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "rimraf": "^6.0.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.70.0"
+  }
+}
