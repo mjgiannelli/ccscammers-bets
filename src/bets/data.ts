@@ -40,10 +40,10 @@ export const BETS: Bet[] = [
     },
   },
   {
-    id: 'jeudy-under-1000',
+    id: 'jeudy-1000-receiving',
     format: 'headToHead',
-    title: 'Jerry Jeudy finishes under 1,000 receiving yards',
-    detail: 'Gerry has the under, Jeff has the over.',
+    title: 'Jerry Jeudy hits 1,000 receiving yards',
+    detail: 'Gerry has the over, Jeff has the under.',
     stake: 100,
     for: ['Gerry'],
     against: ['Jeff'],
@@ -53,7 +53,7 @@ export const BETS: Bet[] = [
       unit: 'rec yds',
       player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 0 },
       target: 1000,
-      direction: 'under',
+      direction: 'over',
     },
   },
   {
