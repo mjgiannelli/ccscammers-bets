@@ -78,7 +78,7 @@ export const BETS: Bet[] = [
     format: 'headToHead',
     title: 'DJ Moore outscores either AJ Brown or JSN',
     detail: 'Tim alone against four. He only needs to beat one of the two.',
-    stake: 20,
+    stake: 25,
     for: ['Tim'],
     against: ['Jeff', 'Mark', 'Nubes', 'Gerry'],
     result: null,
