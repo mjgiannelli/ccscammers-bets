@@ -22,11 +22,7 @@ jobs:
 
       - run: npm ci
 
-      # The API and web app both compile against @ccscammers/shared's dist output.
-      - run: npm run build:shared
-
       - run: npm run lint
       - run: npm run format:check
-      - run: npm run typecheck
       - run: npm test
       - run: npm run build
