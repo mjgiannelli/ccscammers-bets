@@ -39,6 +39,20 @@ describe('Podium', () => {
     expect(rendered.map((step) => step.place)).toEqual(['2', '1', '3']);
   });
 
+  // The pool ladder splits the money between tied players, so the podium has
+  // to call them the same place rather than ordering one above the other.
+  it('gives level scores the same place', () => {
+    const tied = [
+      { abbr: 'T', name: 'Tim', value: 182 },
+      { abbr: 'G', name: 'Gerry', value: 143 },
+      { abbr: 'J', name: 'Jeff', value: 137 },
+      { abbr: 'M', name: 'Mark', value: 137 },
+    ];
+    const { container } = render(<Podium players={tied} unit="pts" />);
+
+    expect(steps(container).map((step) => step.place)).toEqual(['3', '2', '1', '3']);
+  });
+
   it('labels every step with its place', () => {
     render(<Podium players={PLAYERS} unit="pts" />);
 

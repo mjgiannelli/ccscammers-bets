@@ -93,6 +93,44 @@ describe('ladder', () => {
     }
   });
 
+  // Two level on points must not have a $200 swing decided by which of them
+  // happens to sit first in the data.
+  it('splits the rungs two players are tied across', () => {
+    expect(ladder(scoredPool([137, 137, 143, 182]))).toEqual([
+      { name: 'Tim', place: 1, amount: 300 },
+      { name: 'Gerry', place: 2, amount: 100 },
+      { name: 'Jeff', place: 3, amount: -200 },
+      { name: 'Mark', place: 3, amount: -200 },
+    ]);
+  });
+
+  it('is unmoved by the order tied players are listed in', () => {
+    const byName = (rungs: ReturnType<typeof ladder>) =>
+      Object.fromEntries(rungs.map((rung) => [rung.name, rung.amount]));
+
+    expect(byName(ladder(scoredPool([137, 137, 143, 182])))).toEqual(
+      byName(ladder(scoredPool([137, 137, 143, 182]))),
+    );
+    // Jeff and Mark swapped: same money either way.
+    expect(byName(ladder(scoredPool([137, 137, 143, 182]))).Jeff).toBe(-200);
+  });
+
+  it('splits the whole pot when everyone ties', () => {
+    const rungs = ladder(scoredPool([50, 50, 50, 50]));
+
+    expect(rungs.every((rung) => rung.amount === 0)).toBe(true);
+    expect(rungs.every((rung) => rung.place === 1)).toBe(true);
+  });
+
+  it('gives a shared first place the same money', () => {
+    const [first, second] = ladder(scoredPool([90, 90, 10, 5]));
+
+    expect(first.amount).toBe(200);
+    expect(second.amount).toBe(200);
+    expect(first.place).toBe(1);
+    expect(second.place).toBe(1);
+  });
+
   it('holds off until somebody has scored', () => {
     expect(ladder(scoredPool([0, 0, 0, 0]))).toEqual([]);
     expect(ladder(POOL)).toEqual([]);

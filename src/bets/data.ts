@@ -32,10 +32,10 @@ export const BETS: Bet[] = [
       kind: 'podium',
       unit: 'pts',
       players: [
-        { abbr: 'J', name: 'Jeff', value: 15 },
-        { abbr: 'M', name: 'Mark', value: 17 },
-        { abbr: 'G', name: 'Gerry', value: 4 },
-        { abbr: 'T', name: 'Tim', value: 18 },
+        { abbr: 'J', name: 'Jeff', value: 137 },
+        { abbr: 'M', name: 'Mark', value: 137 },
+        { abbr: 'G', name: 'Gerry', value: 143 },
+        { abbr: 'T', name: 'Tim', value: 182 },
       ],
     },
   },
@@ -51,7 +51,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rec yds',
-      player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 0 },
+      player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 26 },
       target: 1000,
       direction: 'over',
     },
@@ -68,7 +68,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rush yds',
-      player: { abbr: 'TU', name: 'Tuten', value: 0 },
+      player: { abbr: 'TU', name: 'Tuten', value: 66 },
       target: 1000,
       direction: 'over',
     },
@@ -95,7 +95,7 @@ export const BETS: Bet[] = [
         reduce: 'min',
         note: 'lower of the two',
       },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 0 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
     },
   },
   {
@@ -110,8 +110,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 0 }] },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 0 }] },
+      left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 35 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
     },
   },
   {
@@ -126,8 +126,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 0 }] },
-      right: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 0 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
+      right: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 8 }] },
     },
   },
   {
@@ -142,8 +142,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 0 }] },
-      right: { players: [{ abbr: 'DOW', name: 'Rico Dowdle', value: 0 }] },
+      left: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 8 }] },
+      right: { players: [{ abbr: 'DOW', name: 'Rico Dowdle', value: 5 }] },
     },
   },
   {
@@ -158,8 +158,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 0 }] },
-      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 0 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
+      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 16 }] },
     },
   },
   {
@@ -177,7 +177,7 @@ export const BETS: Bet[] = [
       // He has the job today. If he loses it, set `answer` to false and swap
       // the phrase to 'OUTLOOK NOT SO GOOD'.
       answer: true,
-      phrase: 'ALL SIGNS POINT TO YES',
+      phrase: 'OUTLOOK NOT SO GOOD',
     },
   },
   {

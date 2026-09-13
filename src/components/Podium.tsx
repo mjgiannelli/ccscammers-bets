@@ -9,9 +9,13 @@ interface Placed extends Tracked {
 }
 
 export function Podium({ players, unit }: { players: Tracked[]; unit: string }) {
-  const ranked: Placed[] = [...players]
-    .sort((a, b) => b.value - a.value)
-    .map((player, index) => ({ ...player, place: index + 1 }));
+  // Competition ranking: level scores take the same place, matching the pool
+  // ladder, which splits the money between them rather than ordering them.
+  const sorted = [...players].sort((a, b) => b.value - a.value);
+  const ranked: Placed[] = sorted.map((player) => ({
+    ...player,
+    place: sorted.findIndex((other) => other.value === player.value) + 1,
+  }));
 
   const best = Math.max(...ranked.map((player) => player.value), 0);
 

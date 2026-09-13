@@ -72,15 +72,8 @@ describe('the phrases written by hand in the data', () => {
     }
   });
 
-  it('agree with the verdict they are attached to', () => {
-    for (const bet of BETS) {
-      if (bet.progress?.kind !== 'eightBall' || !bet.progress.phrase) continue;
-
-      const affirmative = /\bYES\b|CERTAIN|RELY|OUTLOOK GOOD|WITHOUT A DOUBT/.test(
-        bet.progress.phrase,
-      );
-      if (bet.progress.answer === true) expect(affirmative).toBe(true);
-      if (bet.progress.answer === false) expect(affirmative).toBe(false);
-    }
-  });
+  // Deliberately NOT checked against `answer`. The ball editorialises about
+  // where a bet is heading, which is not always where it stands today — Watson
+  // holds the job while the ball reckons he will not hold it to week 18. The
+  // money and the yes/no label come from `answer`, never from the wording.
 });

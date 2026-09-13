@@ -174,6 +174,11 @@ export interface Rung extends BetStanding {
  * `stake * (n - 2p + 1)`: four at $100 finish +300, +100, -100, -300. That is
  * symmetric about the middle, so it always sums to zero.
  *
+ * Players level on points share the rungs they jointly occupy and take the
+ * same placing — two tied for third split third and fourth and are both third.
+ * Splitting keeps the table balanced, and it stops the order names happen to
+ * sit in the data from quietly deciding a $200 swing.
+ *
  * Placings come from the podium numbers. Returns nothing if the bet tracks no
  * numbers or nobody has scored yet.
  */
@@ -185,10 +190,25 @@ export function ladder(bet: PoolBet): Rung[] {
   if (ranked.every((player) => player.value === 0)) return [];
 
   const size = ranked.length;
-  return ranked.map((player, index) => {
-    const place = index + 1;
-    return { name: player.name, place, amount: bet.stake * (size - 2 * place + 1) };
-  });
+  const rung = (place: number) => bet.stake * (size - 2 * place + 1);
+
+  const rungs: Rung[] = [];
+  for (let start = 0; start < size;) {
+    // Everyone on the same score shares the rungs they jointly occupy, so the
+    // order they happen to sit in the data cannot decide who pays whom.
+    let end = start;
+    while (end + 1 < size && ranked[end + 1].value === ranked[start].value) end += 1;
+
+    let pooled = 0;
+    for (let place = start + 1; place <= end + 1; place += 1) pooled += rung(place);
+    const share = pooled / (end - start + 1);
+
+    for (let index = start; index <= end; index += 1) {
+      rungs.push({ name: ranked[index].name, place: start + 1, amount: share });
+    }
+    start = end + 1;
+  }
+  return rungs;
 }
 
 /**

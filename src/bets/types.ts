@@ -129,8 +129,10 @@ export type Progress =
    * `false` means it is not, and `null` means it is too early to call.
    *
    * `phrase` overrides what the ball actually says. Leave it off and the ball
-   * picks a fitting classic on its own; set it to word the verdict yourself.
-   * Keep it to roughly four short words so it stays inside the die.
+   * picks a fitting classic on its own. It is flavour, and free to editorialise
+   * about where things are heading rather than where they stand — the money and
+   * the yes/no label come from `answer` alone. Keep it to roughly four short
+   * words so it stays inside the die.
    */
   | { kind: 'eightBall'; question: string; answer: boolean | null; phrase?: string };
 
