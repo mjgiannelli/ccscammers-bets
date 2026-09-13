@@ -27,7 +27,7 @@ describe('EightBall', () => {
   it('hedges while it is too early to call', () => {
     const { container } = render(<EightBall question={QUESTION} answer={null} />);
 
-    expect(answerText(container)).toMatch(/HAZY|AGAIN|CANNOT PREDICT/);
+    expect(answerText(container)).toMatch(/HAZY|AGAIN|CANNOT PREDICT|TELL YOU/);
     expect(screen.getByText('Too early to call')).toBeInTheDocument();
   });
 

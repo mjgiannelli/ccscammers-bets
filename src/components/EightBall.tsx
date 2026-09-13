@@ -6,7 +6,9 @@ const DIE_R = 39;
 const DIE_TOP = WINDOW.cy - DIE_R / 2;
 const DIE_HALF = DIE_R * 0.866;
 
-const LINE_HEIGHT = 11;
+const LINE_HEIGHT = 10;
+/** Where the first line sits — below the die's top edge, not up against it. */
+const TEXT_TOP = 76;
 
 export function EightBall({
   question,
@@ -87,10 +89,10 @@ export function EightBall({
           <text
             key={line}
             x={WINDOW.cx}
-            y={WINDOW.cy - 4 + (index - (lines.length - 1) / 2) * LINE_HEIGHT}
+            y={(lines.length === 1 ? TEXT_TOP + 4 : TEXT_TOP) + index * LINE_HEIGHT}
             textAnchor="middle"
             dominantBaseline="central"
-            fontSize="7.5"
+            fontSize="7"
             fontWeight="700"
             letterSpacing="0.3"
             fill="#f2f4f8"

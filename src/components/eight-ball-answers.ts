@@ -18,15 +18,17 @@ export const ANSWERS = {
     'REPLY HAZY TRY AGAIN',
     'ASK AGAIN LATER',
     'CANNOT PREDICT NOW',
-    'CONCENTRATE AND ASK AGAIN',
+    'BETTER NOT TELL YOU NOW',
   ],
 } as const;
 
 /**
- * Characters that fit across the die at each line's height. It is a triangle
- * standing on its point, so the third line has half the room of the first.
+ * Characters allowed on each line. It is a triangle standing on its point, so
+ * the third line has less room than the first — and each budget stops short of
+ * what would actually fit, leaving the text clear of the sloped edges rather
+ * than running into them.
  */
-export const LINE_WIDTHS = [12, 9, 6];
+export const LINE_WIDTHS = [10, 8, 6];
 
 /**
  * Same question, same answer, same phrase every render — a ball that reshuffled
