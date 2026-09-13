@@ -1,70 +1,91 @@
-/** Classic answers, grouped by what the ball is actually saying. */
-const AFFIRMATIVE = [
-  'IT IS CERTAIN',
-  'WITHOUT A DOUBT',
-  'SIGNS POINT TO YES',
-  'YES DEFINITELY',
-  'OUTLOOK GOOD',
-  'YOU MAY RELY ON IT',
-];
+import { pickAnswer, wrapAnswer } from './eight-ball-answers';
 
-const NEGATIVE = [
-  "DON'T COUNT ON IT",
-  'MY SOURCES SAY NO',
-  'OUTLOOK NOT SO GOOD',
-  'VERY DOUBTFUL',
-  'MY REPLY IS NO',
-];
+/* The die is an equilateral triangle inscribed in the window, point down. */
+const WINDOW = { cx: 80, cy: 84, r: 45 };
+const DIE_R = 39;
+const DIE_TOP = WINDOW.cy - DIE_R / 2;
+const DIE_HALF = DIE_R * 0.866;
 
-const HAZY = [
-  'REPLY HAZY TRY AGAIN',
-  'ASK AGAIN LATER',
-  'CANNOT PREDICT NOW',
-  'CONCENTRATE AND ASK AGAIN',
-];
+const LINE_HEIGHT = 11;
 
 export function EightBall({ question, answer }: { question: string; answer: boolean | null }) {
-  const phrase = pick(question, answer);
-  const lines = wrap(phrase);
+  const phrase = pickAnswer(question, answer);
+  const lines = wrapAnswer(phrase);
   const tone = answer === null ? 'text-muted' : answer ? 'text-win' : 'text-loss';
 
   return (
-    <div className="grid justify-items-center gap-2">
+    <div className="grid justify-items-center gap-3">
       <p className="text-center text-sm text-muted">{question}</p>
 
-      <svg viewBox="0 0 140 140" className="w-32" role="img" aria-label={`Magic 8-ball: ${phrase}`}>
-        <circle cx="70" cy="70" r="62" fill="#07090d" stroke="var(--color-edge)" strokeWidth="2" />
-        {/* A touch of gloss, so it reads as a ball rather than a flat disc. */}
-        <ellipse cx="49" cy="38" rx="17" ry="10" fill="#ffffff" opacity="0.09" />
+      <svg viewBox="0 0 160 160" className="w-40" role="img" aria-label={`Magic 8-ball: ${phrase}`}>
+        <defs>
+          <radialGradient id="eb-ball" cx="34%" cy="27%" r="80%">
+            <stop offset="0%" stopColor="#8b93a3" />
+            <stop offset="18%" stopColor="#3c414d" />
+            <stop offset="45%" stopColor="#15171c" />
+            <stop offset="100%" stopColor="#000000" />
+          </radialGradient>
+          <linearGradient id="eb-die" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#5b2ef0" />
+            <stop offset="100%" stopColor="#2409a6" />
+          </linearGradient>
+          <filter id="eb-soft" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" />
+          </filter>
+          <filter id="eb-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" />
+          </filter>
+        </defs>
 
-        <circle cx="26" cy="26" r="12" fill="#f2f4f8" />
-        <text
-          x="26"
-          y="26"
-          textAnchor="middle"
-          dominantBaseline="central"
-          fontSize="14"
-          fontWeight="700"
-          fill="#07090d"
-        >
-          8
-        </text>
+        <circle cx="80" cy="80" r="78" fill="url(#eb-ball)" />
 
-        <circle cx="70" cy="74" r="37" fill="#05070a" />
-        {/* The die floating in the window, point down. */}
-        <polygon points="35,50 105,50 70,110" fill="#2b3a72" />
+        {/* Specular highlight up top, and the light that wraps the far edge. */}
+        <ellipse
+          cx="52"
+          cy="34"
+          rx="26"
+          ry="15"
+          fill="#ffffff"
+          opacity="0.45"
+          filter="url(#eb-soft)"
+          transform="rotate(-24 52 34)"
+        />
+        <ellipse
+          cx="116"
+          cy="126"
+          rx="34"
+          ry="17"
+          fill="#ffffff"
+          opacity="0.12"
+          filter="url(#eb-soft)"
+          transform="rotate(-38 116 126)"
+        />
+
+        {/* The window: black well behind a thin bright bezel. */}
+        <circle cx={WINDOW.cx} cy={WINDOW.cy} r={WINDOW.r + 3} fill="#000000" opacity="0.85" />
+        <circle
+          cx={WINDOW.cx}
+          cy={WINDOW.cy}
+          r={WINDOW.r}
+          fill="#04050a"
+          stroke="#c3cad8"
+          strokeWidth="1.6"
+        />
+
+        <polygon points={diePoints()} fill="#4a1fe0" opacity="0.55" filter="url(#eb-glow)" />
+        <polygon points={diePoints()} fill="url(#eb-die)" />
 
         {lines.map((line, index) => (
           <text
             key={line}
-            x="70"
-            y={66 + index * 11 - (lines.length - 1) * 5.5}
+            x={WINDOW.cx}
+            y={WINDOW.cy - 4 + (index - (lines.length - 1) / 2) * LINE_HEIGHT}
             textAnchor="middle"
             dominantBaseline="central"
-            fontSize="8"
+            fontSize="7.5"
             fontWeight="700"
-            letterSpacing="0.4"
-            fill="#e7eaf0"
+            letterSpacing="0.3"
+            fill="#f2f4f8"
           >
             {line}
           </text>
@@ -78,32 +99,7 @@ export function EightBall({ question, answer }: { question: string; answer: bool
   );
 }
 
-/**
- * Same question, same answer, same phrase every render — a ball that reshuffled
- * on every re-render would be unreadable.
- */
-function pick(question: string, answer: boolean | null): string {
-  const bank = answer === null ? HAZY : answer ? AFFIRMATIVE : NEGATIVE;
-
-  let hash = 0;
-  for (const character of question) {
-    hash = (hash * 31 + character.charCodeAt(0)) % 100_000;
-  }
-  return bank[hash % bank.length];
-}
-
-/** Breaks a phrase into at most three short lines to fit the window. */
-function wrap(phrase: string): string[] {
-  const words = phrase.split(' ');
-  const lines: string[] = [];
-
-  for (const word of words) {
-    const last = lines[lines.length - 1];
-    if (last && `${last} ${word}`.length <= 11) {
-      lines[lines.length - 1] = `${last} ${word}`;
-    } else {
-      lines.push(word);
-    }
-  }
-  return lines;
+function diePoints(): string {
+  const apex = WINDOW.cy + DIE_R;
+  return `${WINDOW.cx - DIE_HALF},${DIE_TOP} ${WINDOW.cx + DIE_HALF},${DIE_TOP} ${WINDOW.cx},${apex}`;
 }

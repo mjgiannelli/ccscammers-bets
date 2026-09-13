@@ -6,10 +6,7 @@ import { EightBall } from './EightBall';
 const QUESTION = 'Watson still QB1 in week 18?';
 
 function answerText(container: HTMLElement) {
-  return [...container.querySelectorAll('svg text')]
-    .map((node) => node.textContent)
-    .filter((text) => text !== '8')
-    .join(' ');
+  return [...container.querySelectorAll('svg text')].map((node) => node.textContent).join(' ');
 }
 
 describe('EightBall', () => {
