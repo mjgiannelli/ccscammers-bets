@@ -136,6 +136,11 @@ export function leaning(bet: Bet): string | null {
   // A pool has no single side to lean toward; every player sits on a rung.
   if (progress.kind === 'podium') return null;
 
+  if (progress.kind === 'eightBall') {
+    if (progress.answer === null) return null;
+    return progress.answer ? 'for' : 'against';
+  }
+
   if (progress.kind === 'bar') {
     const reached = progress.player.value >= progress.target;
     const forSideAhead = progress.direction === 'under' ? !reached : reached;

@@ -163,6 +163,22 @@ export const BETS: Bet[] = [
     },
   },
   {
+    id: 'watson-browns-qb1',
+    format: 'headToHead',
+    title: 'Deshaun Watson ends the season as the Browns starting QB',
+    detail: 'Gerry says yes, Mark says no.',
+    stake: 20,
+    for: ['Gerry'],
+    against: ['Mark'],
+    result: null,
+    progress: {
+      kind: 'eightBall',
+      question: 'Watson still QB1 in week 18?',
+      // Flip to `true` while he holds the job, `false` once he does not.
+      answer: null,
+    },
+  },
+  {
     id: 'league-winner',
     format: 'headToHead',
     title: 'League winner pays the other $1,000',

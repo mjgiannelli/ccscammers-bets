@@ -1,5 +1,6 @@
 import { betStandings, formatMoney } from '../bets/ledger';
 import { betStatus, type Bet, type Progress } from '../bets/types';
+import { EightBall } from './EightBall';
 import { Podium } from './Podium';
 import { ProgressBar } from './ProgressBar';
 import { Seesaw } from './Seesaw';
@@ -50,6 +51,8 @@ function ProgressView({ progress }: { progress: Progress }) {
       return <ProgressBar player={progress.player} target={progress.target} unit={progress.unit} />;
     case 'seesaw':
       return <Seesaw left={progress.left} right={progress.right} unit={progress.unit} />;
+    case 'eightBall':
+      return <EightBall question={progress.question} answer={progress.answer} />;
   }
 }
 

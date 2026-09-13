@@ -122,7 +122,13 @@ export type Progress =
    * `right` always holds the player the bet title is named after, so the `for`
    * side is winning exactly when the right end is heavier.
    */
-  | { kind: 'seesaw'; unit: string; left: SeesawSide; right: SeesawSide };
+  | { kind: 'seesaw'; unit: string; left: SeesawSide; right: SeesawSide }
+  /**
+   * A yes-or-no proposition with no number to track. `answer` is where the
+   * question stands today: `true` means the bet title is currently true,
+   * `false` means it is not, and `null` means it is too early to call.
+   */
+  | { kind: 'eightBall'; question: string; answer: boolean | null };
 
 /** The player on a see-saw side whose number is actually in play right now. */
 export function effective(side: SeesawSide): Tracked {

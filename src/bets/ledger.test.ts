@@ -286,6 +286,17 @@ describe('leaning', () => {
     expect(leaning(bar(1200, 'over'))).toBe('for');
   });
 
+  it('takes a yes-or-no prop straight from the eight ball', () => {
+    const ball = (answer: boolean | null): Bet => ({
+      ...ONE_VS_FOUR,
+      progress: { kind: 'eightBall', question: 'Still QB1?', answer },
+    });
+
+    expect(leaning(ball(true))).toBe('for');
+    expect(leaning(ball(false))).toBe('against');
+    expect(leaning(ball(null))).toBeNull();
+  });
+
   // A pool has no single side to back, so it has no leaning; use `ladder`.
   it('has no opinion on a pool', () => {
     expect(leaning(scoredPool([10, 40, 5, 2]))).toBeNull();
