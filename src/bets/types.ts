@@ -127,8 +127,12 @@ export type Progress =
    * A yes-or-no proposition with no number to track. `answer` is where the
    * question stands today: `true` means the bet title is currently true,
    * `false` means it is not, and `null` means it is too early to call.
+   *
+   * `phrase` overrides what the ball actually says. Leave it off and the ball
+   * picks a fitting classic on its own; set it to word the verdict yourself.
+   * Keep it to roughly four short words so it stays inside the die.
    */
-  | { kind: 'eightBall'; question: string; answer: boolean | null };
+  | { kind: 'eightBall'; question: string; answer: boolean | null; phrase?: string };
 
 /** The player on a see-saw side whose number is actually in play right now. */
 export function effective(side: SeesawSide): Tracked {

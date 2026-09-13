@@ -52,7 +52,9 @@ function ProgressView({ progress }: { progress: Progress }) {
     case 'seesaw':
       return <Seesaw left={progress.left} right={progress.right} unit={progress.unit} />;
     case 'eightBall':
-      return <EightBall question={progress.question} answer={progress.answer} />;
+      return (
+        <EightBall question={progress.question} answer={progress.answer} phrase={progress.phrase} />
+      );
   }
 }
 

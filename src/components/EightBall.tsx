@@ -8,8 +8,16 @@ const DIE_HALF = DIE_R * 0.866;
 
 const LINE_HEIGHT = 11;
 
-export function EightBall({ question, answer }: { question: string; answer: boolean | null }) {
-  const phrase = pickAnswer(question, answer);
+export function EightBall({
+  question,
+  answer,
+  phrase: override,
+}: {
+  question: string;
+  answer: boolean | null;
+  phrase?: string;
+}) {
+  const phrase = override ?? pickAnswer(question, answer);
   const lines = wrapAnswer(phrase);
   const tone = answer === null ? 'text-muted' : answer ? 'text-win' : 'text-loss';
 

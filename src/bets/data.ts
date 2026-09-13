@@ -174,8 +174,10 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'eightBall',
       question: 'Watson still QB1 in week 18?',
-      // Flip to `true` while he holds the job, `false` once he does not.
-      answer: null,
+      // He has the job today. If he loses it, set `answer` to false and swap
+      // the phrase to 'OUTLOOK NOT SO GOOD'.
+      answer: true,
+      phrase: 'ALL SIGNS POINT TO YES',
     },
   },
   {
