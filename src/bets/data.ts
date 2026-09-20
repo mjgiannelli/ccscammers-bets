@@ -163,6 +163,22 @@ export const BETS: Bet[] = [
     },
   },
   {
+    id: 'jacobs-over-pierce',
+    format: 'headToHead',
+    title: 'Josh Jacobs outscores Alec Pierce',
+    detail: 'Gerry has Jacobs, Mark has Pierce.',
+    stake: 25,
+    for: ['Gerry'],
+    against: ['Mark'],
+    result: null,
+    progress: {
+      kind: 'seesaw',
+      unit: 'pts',
+      left: { players: [{ abbr: 'AP', name: 'Alec Pierce', value: 0 }] },
+      right: { players: [{ abbr: 'JAC', name: 'Josh Jacobs', value: 0 }] },
+    },
+  },
+  {
     id: 'watson-browns-qb1',
     format: 'headToHead',
     title: 'Deshaun Watson ends the season as the Browns starting QB',
