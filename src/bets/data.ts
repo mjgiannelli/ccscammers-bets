@@ -174,7 +174,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'AP', name: 'Alec Pierce', value: 0 }] },
+      left: { players: [{ abbr: 'AP', name: 'Alec Pierce', value: 11 }] },
       right: { players: [{ abbr: 'JAC', name: 'Josh Jacobs', value: 0 }] },
     },
   },
