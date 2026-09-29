@@ -1,8 +1,15 @@
 import type { Tracked } from '../bets/types';
 
-/** Tall enough to hold the place number even when nobody has scored. */
-const MIN_STEP = 28;
-const MAX_STEP = 76;
+/** Tall enough to hold the place number even for someone yet to score. */
+const MIN_STEP = 26;
+const MAX_STEP = 88;
+
+/**
+ * A full-height step means taking this multiple of an even share of the points
+ * — so in a four-way pool the top of the podium is half of everything scored,
+ * and four players dead level all stand at the same middling height.
+ */
+const FULL_STEP_AT = 2;
 
 interface Placed extends Tracked {
   place: number;
@@ -18,14 +25,19 @@ export function Podium({ players, unit }: { players: Tracked[]; unit: string }) 
   }));
 
   const best = Math.max(...ranked.map((player) => player.value), 0);
+  const total = ranked.reduce((sum, player) => sum + player.value, 0);
+  const evenShare = 1 / (ranked.length || 1);
 
   return (
     <ol className="flex items-end justify-center gap-2" aria-label="Podium">
       {arrange(ranked).map((player) => {
-        // Step height tracks the score itself, not the placing, so a runaway
-        // leader actually looks like one.
-        const share = best > 0 ? player.value / best : 0;
-        const height = MIN_STEP + share * (MAX_STEP - MIN_STEP);
+        // Height is each player's share of every point scored, not their rank
+        // and not their score against the leader — so the podium shows how much
+        // of the pool someone is actually carrying. Before anyone scores,
+        // everybody holds an even share.
+        const share = total > 0 ? player.value / total : evenShare;
+        const fill = Math.min(share / (FULL_STEP_AT * evenShare), 1);
+        const height = MIN_STEP + fill * (MAX_STEP - MIN_STEP);
         const leading = player.place === 1 && best > 0;
 
         return (
@@ -59,7 +71,8 @@ export function Podium({ players, unit }: { players: Tracked[]; unit: string }) 
                 {player.place}
               </span>
               <span className="sr-only">
-                {player.name}, {ordinal(player.place)} with {player.value} {unit}
+                {player.name}, {ordinal(player.place)} with {player.value} {unit},{' '}
+                {Math.round(share * 100)}% of all points
               </span>
             </div>
           </li>

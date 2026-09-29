@@ -56,12 +56,75 @@ describe('Podium', () => {
   it('labels every step with its place', () => {
     render(<Podium players={PLAYERS} unit="pts" />);
 
+    // 140 of the 240 points on the board, and 20 of them.
     const list = within(screen.getByRole('list'));
-    expect(list.getByText('Mark, 1st with 140 pts')).toBeInTheDocument();
-    expect(list.getByText('Gerry, 3rd with 20 pts')).toBeInTheDocument();
+    expect(list.getByText('Mark, 1st with 140 pts, 58% of all points')).toBeInTheDocument();
+    expect(list.getByText('Gerry, 3rd with 20 pts, 8% of all points')).toBeInTheDocument();
   });
 
-  // A taller step for a bigger number is the whole point of the shape.
+  // The leader used to be pinned at full height no matter what. Height is now
+  // a share of everything scored, so the same leading score gives a shorter
+  // step when the rest of the field is closer behind.
+  it('sizes a step by its share of all points, not against the leader', () => {
+    const runaway = steps(
+      render(
+        <Podium
+          players={[
+            { abbr: 'A', name: 'A', value: 60 },
+            { abbr: 'B', name: 'B', value: 20 },
+            { abbr: 'C', name: 'C', value: 20 },
+          ]}
+          unit="pts"
+        />,
+      ).container,
+    );
+    const tight = steps(
+      render(
+        <Podium
+          players={[
+            { abbr: 'A', name: 'A', value: 60 },
+            { abbr: 'B', name: 'B', value: 40 },
+            { abbr: 'C', name: 'C', value: 40 },
+          ]}
+          unit="pts"
+        />,
+      ).container,
+    );
+
+    const leaderIn = (rendered: ReturnType<typeof steps>) =>
+      rendered.find((step) => step.place === '1')!.height;
+
+    expect(leaderIn(runaway)).toBeGreaterThan(leaderIn(tight));
+  });
+
+  it('stands everyone level when the points are level', () => {
+    const { container } = render(
+      <Podium
+        players={[
+          { abbr: 'A', name: 'A', value: 250 },
+          { abbr: 'B', name: 'B', value: 250 },
+          { abbr: 'C', name: 'C', value: 250 },
+        ]}
+        unit="pts"
+      />,
+    );
+
+    const heights = steps(container).map((step) => step.height);
+    expect(new Set(heights).size).toBe(1);
+  });
+
+  // Doubling everybody changes nobody's share, so the podium must not move.
+  it('cares about proportion, not magnitude', () => {
+    const small = steps(render(<Podium players={PLAYERS} unit="pts" />).container);
+    const large = steps(
+      render(<Podium players={PLAYERS.map((p) => ({ ...p, value: p.value * 7 }))} unit="pts" />)
+        .container,
+    );
+
+    expect(large.map((s) => s.height)).toEqual(small.map((s) => s.height));
+  });
+
+  // A taller step for a bigger number is still true within one podium.
   it('scales step height with the score', () => {
     const { container } = render(<Podium players={PLAYERS} unit="pts" />);
     const [jeff, mark, gerry] = steps(container);
