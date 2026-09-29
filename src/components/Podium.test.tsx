@@ -56,35 +56,29 @@ describe('Podium', () => {
   it('labels every step with its place', () => {
     render(<Podium players={PLAYERS} unit="pts" />);
 
-    // 140 of the 240 points on the board, and 20 of them.
     const list = within(screen.getByRole('list'));
-    expect(list.getByText('Mark, 1st with 140 pts, 58% of all points')).toBeInTheDocument();
-    expect(list.getByText('Gerry, 3rd with 20 pts, 8% of all points')).toBeInTheDocument();
+    expect(list.getByText('Mark, 1st with 140 pts')).toBeInTheDocument();
+    expect(list.getByText('Gerry, 3rd with 20 pts')).toBeInTheDocument();
   });
 
-  // The leader used to be pinned at full height no matter what. Height is now
-  // a share of everything scored, so the same leading score gives a shorter
-  // step when the rest of the field is closer behind.
-  it('sizes a step by its share of all points, not against the leader', () => {
+  it('always stands the leader at full height', () => {
     const runaway = steps(
       render(
         <Podium
           players={[
-            { abbr: 'A', name: 'A', value: 60 },
+            { abbr: 'A', name: 'A', value: 600 },
             { abbr: 'B', name: 'B', value: 20 },
-            { abbr: 'C', name: 'C', value: 20 },
           ]}
           unit="pts"
         />,
       ).container,
     );
-    const tight = steps(
+    const photoFinish = steps(
       render(
         <Podium
           players={[
-            { abbr: 'A', name: 'A', value: 60 },
-            { abbr: 'B', name: 'B', value: 40 },
-            { abbr: 'C', name: 'C', value: 40 },
+            { abbr: 'A', name: 'A', value: 600 },
+            { abbr: 'B', name: 'B', value: 599 },
           ]}
           unit="pts"
         />,
@@ -94,7 +88,48 @@ describe('Podium', () => {
     const leaderIn = (rendered: ReturnType<typeof steps>) =>
       rendered.find((step) => step.place === '1')!.height;
 
-    expect(leaderIn(runaway)).toBeGreaterThan(leaderIn(tight));
+    expect(leaderIn(runaway)).toBe(leaderIn(photoFinish));
+  });
+
+  // Straight proportion leaves a normal field a few pixels apart, so the
+  // curve has to push a trailing score further down than its ratio alone
+  // would — while a near-tie still has to read as a near-tie.
+  it('stretches the gap below the leader', () => {
+    const half = steps(
+      render(
+        <Podium
+          players={[
+            { abbr: 'A', name: 'A', value: 100 },
+            { abbr: 'B', name: 'B', value: 50 },
+          ]}
+          unit="pts"
+        />,
+      ).container,
+    );
+    const [top, bottom] = [
+      half.find((step) => step.place === '1')!.height,
+      half.find((step) => step.place === '2')!.height,
+    ];
+    const floor = Math.min(...half.map((step) => step.height)) - 0.001;
+    const linear = floor + (top - floor) * 0.5;
+
+    // Half the leader's points sits well under half the leader's step.
+    expect(bottom).toBeLessThan(linear);
+  });
+
+  it('keeps a photo finish looking close', () => {
+    const { container } = render(
+      <Podium
+        players={[
+          { abbr: 'A', name: 'A', value: 600 },
+          { abbr: 'B', name: 'B', value: 597 },
+        ]}
+        unit="pts"
+      />,
+    );
+
+    const [a, b] = steps(container).map((step) => step.height);
+    expect(Math.abs(a - b)).toBeLessThan(2);
   });
 
   it('stands everyone level when the points are level', () => {

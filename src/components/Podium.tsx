@@ -5,11 +5,17 @@ const MIN_STEP = 26;
 const MAX_STEP = 88;
 
 /**
- * A full-height step means taking this multiple of an even share of the points
- * — so in a four-way pool the top of the podium is half of everything scored,
- * and four players dead level all stand at the same middling height.
+ * Steps are measured against the leader, who always stands at full height, and
+ * that ratio is raised to this power before it becomes a height.
+ *
+ * Straight proportion is too flat to read as a podium: a field inside 30% of
+ * each other, which is a normal season, produces steps a few pixels apart.
+ * Cubing stretches those gaps into something with a shape while keeping what
+ * the height means — level scores stay level, a bigger lead is always a taller
+ * step, and a photo finish still looks like one. Turn it up for more drama,
+ * down toward 1 for straight proportion.
  */
-const FULL_STEP_AT = 2;
+const STEEPNESS = 3;
 
 interface Placed extends Tracked {
   place: number;
@@ -25,18 +31,14 @@ export function Podium({ players, unit }: { players: Tracked[]; unit: string }) 
   }));
 
   const best = Math.max(...ranked.map((player) => player.value), 0);
-  const total = ranked.reduce((sum, player) => sum + player.value, 0);
-  const evenShare = 1 / (ranked.length || 1);
 
   return (
     <ol className="flex items-end justify-center gap-2" aria-label="Podium">
       {arrange(ranked).map((player) => {
-        // Height is each player's share of every point scored, not their rank
-        // and not their score against the leader — so the podium shows how much
-        // of the pool someone is actually carrying. Before anyone scores,
-        // everybody holds an even share.
-        const share = total > 0 ? player.value / total : evenShare;
-        const fill = Math.min(share / (FULL_STEP_AT * evenShare), 1);
+        // Everyone is measured against the leader, so first place tops the
+        // podium and the rest fall away from it. Before anyone scores they are
+        // all tied for the lead, and all stand level.
+        const fill = best > 0 ? (player.value / best) ** STEEPNESS : 1;
         const height = MIN_STEP + fill * (MAX_STEP - MIN_STEP);
         const leading = player.place === 1 && best > 0;
 
@@ -71,8 +73,7 @@ export function Podium({ players, unit }: { players: Tracked[]; unit: string }) 
                 {player.place}
               </span>
               <span className="sr-only">
-                {player.name}, {ordinal(player.place)} with {player.value} {unit},{' '}
-                {Math.round(share * 100)}% of all points
+                {player.name}, {ordinal(player.place)} with {player.value} {unit}
               </span>
             </div>
           </li>
