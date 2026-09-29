@@ -32,10 +32,10 @@ export const BETS: Bet[] = [
       kind: 'podium',
       unit: 'pts',
       players: [
-        { abbr: 'J', name: 'Jeff', value: 137 },
-        { abbr: 'M', name: 'Mark', value: 187 },
-        { abbr: 'G', name: 'Gerry', value: 162 },
-        { abbr: 'T', name: 'Tim', value: 205 },
+        { abbr: 'J', name: 'Jeff', value: 387 },
+        { abbr: 'M', name: 'Mark', value: 455 },
+        { abbr: 'G', name: 'Gerry', value: 489 },
+        { abbr: 'T', name: 'Tim', value: 498 },
       ],
     },
   },
@@ -68,7 +68,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rush yds',
-      player: { abbr: 'TU', name: 'Tuten', value: 66 },
+      player: { abbr: 'TU', name: 'Tuten', value: 204 },
       target: 1000,
       direction: 'over',
     },
@@ -90,12 +90,12 @@ export const BETS: Bet[] = [
       left: {
         players: [
           { abbr: 'AJB', name: 'AJ Brown', value: 6 },
-          { abbr: 'JSN', name: 'JSN', value: 33 },
+          { abbr: 'JSN', name: 'JSN', value: 131 },
         ],
         reduce: 'min',
         note: 'lower of the two',
       },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
     },
   },
   {
@@ -110,8 +110,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 35 }] },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
+      left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 81 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
     },
   },
   {
@@ -126,7 +126,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
       right: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 8 }] },
     },
   },
@@ -143,7 +143,7 @@ export const BETS: Bet[] = [
       kind: 'seesaw',
       unit: 'pts',
       left: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 8 }] },
-      right: { players: [{ abbr: 'DOW', name: 'Rico Dowdle', value: 5 }] },
+      right: { players: [{ abbr: 'DOW', name: 'Rico Dowdle', value: 12 }] },
     },
   },
   {
@@ -158,8 +158,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 29 }] },
-      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 16 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
+      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 46 }] },
     },
   },
   {
@@ -174,7 +174,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'AP', name: 'Alec Pierce', value: 11 }] },
+      left: { players: [{ abbr: 'AP', name: 'Alec Pierce', value: 14 }] },
       right: { players: [{ abbr: 'JAC', name: 'Josh Jacobs', value: 0 }] },
     },
   },
