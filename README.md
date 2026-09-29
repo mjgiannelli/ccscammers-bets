@@ -43,6 +43,11 @@ standings — the week number and one string per paragraph. Nothing in it is
 computed, so say whatever you like. Empty the `summary` array and the section
 disappears rather than leaving a blank card.
 
+The section collapses, and each person's browser remembers whether they left it
+shut. Changing the week number _or_ editing the text counts as a new write-up
+and reopens it for everybody, so nobody misses one because they collapsed the
+last one.
+
 ### 3. Settle anything that finished
 
 Every bet has a `result` field:
