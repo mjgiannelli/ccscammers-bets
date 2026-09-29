@@ -3,8 +3,10 @@ import { useMemo, useState } from 'react';
 import { BETS } from './bets/data';
 import { standings } from './bets/ledger';
 import { betStatus } from './bets/types';
+import { WEEK } from './bets/week';
 import { BetCard } from './components/BetCard';
 import { Standings } from './components/Standings';
+import { WeekSummary } from './components/WeekSummary';
 
 const FILTERS = [
   { value: 'all', label: 'All' },
@@ -32,6 +34,8 @@ export function App() {
         <h1 className="text-2xl font-semibold">CC Scammers 2026</h1>
         <p className="mt-1 text-sm text-muted">Every side bet on the board. {live} still live.</p>
       </header>
+
+      <WeekSummary week={WEEK} />
 
       <section className="grid gap-3">
         <h2 className="text-base font-semibold">Standings</h2>

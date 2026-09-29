@@ -36,7 +36,14 @@ A see-saw side can hold two players with `reduce: 'min'`. That is for the
 "DJ Moore beats _either_ AJ Brown or JSN" bet, where only the lower of the two
 has to be cleared — whichever that currently is shows on the avatar.
 
-### 2. Settle anything that finished
+### 2. Write up the week
+
+[`src/bets/week.ts`](src/bets/week.ts) holds the blurb that sits above the
+standings — the week number and one string per paragraph. Nothing in it is
+computed, so say whatever you like. Empty the `summary` array and the section
+disappears rather than leaving a blank card.
+
+### 3. Settle anything that finished
 
 Every bet has a `result` field:
 
@@ -99,9 +106,11 @@ The build is a plain static site in `dist/`.
 src/
   bets/
     data.ts        the bets and their numbers — the file you edit week to week
+    week.ts        the write-up shown above the standings
     types.ts       bet shapes, per-person upside/downside, progress shapes
     ledger.ts      standings, live projections, and the pool ladder
   components/
+    WeekSummary.tsx  the week's write-up
     Standings.tsx  the money table
     BetCard.tsx    one bet, and which progress view it gets
     Podium.tsx     ranked steps for the season-points pool

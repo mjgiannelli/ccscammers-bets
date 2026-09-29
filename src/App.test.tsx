@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 import { App } from './App';
 import { BETS } from './bets/data';
+import { WEEK } from './bets/week';
 
 describe('App', () => {
   it('renders every bet from the data file', () => {
@@ -12,6 +13,16 @@ describe('App', () => {
     for (const bet of BETS) {
       expect(screen.getByText(bet.title)).toBeInTheDocument();
     }
+  });
+
+  // The write-up sets up the table, so it has to come before it.
+  it('puts the week summary above the standings', () => {
+    render(<App />);
+
+    const summary = screen.getByRole('heading', { name: `Week ${WEEK.number} Summary` });
+    const standings = screen.getByRole('heading', { name: 'Standings' });
+
+    expect(summary.compareDocumentPosition(standings)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 
   it('lists the whole roster in the standings', () => {
