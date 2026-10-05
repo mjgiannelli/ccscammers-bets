@@ -108,6 +108,9 @@ export interface SeesawSide {
   note?: string;
 }
 
+/** A full NFL regular season. */
+export const SEASON_GAMES = 17;
+
 export type Progress =
   /** Ranked standing: the bigger the number, the higher the step. */
   | { kind: 'podium'; unit: string; players: Tracked[] }
@@ -116,7 +119,17 @@ export type Progress =
    * title reads: `over` means the `for` side needs the target reached, `under`
    * means they need it missed.
    */
-  | { kind: 'bar'; unit: string; player: Tracked; target: number; direction: 'over' | 'under' }
+  | {
+      kind: 'bar';
+      unit: string;
+      player: Tracked;
+      target: number;
+      direction: 'over' | 'under';
+      /** Games this player has actually played, which is what pace divides by. */
+      gamesPlayed: number;
+      /** Length of the season. Defaults to `SEASON_GAMES`. */
+      seasonGames?: number;
+    }
   /**
    * Two sides weighed against each other; the heavier one sits on the ground.
    * `right` always holds the player the bet title is named after, so the `for`

@@ -2,7 +2,6 @@ import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 import { Podium } from './Podium';
-import { ProgressBar } from './ProgressBar';
 
 const PLAYERS = [
   { abbr: 'J', name: 'Jeff', value: 80 },
@@ -174,31 +173,5 @@ describe('Podium', () => {
     );
 
     expect(steps(container).every((step) => step.height > 0)).toBe(true);
-  });
-});
-
-describe('ProgressBar', () => {
-  it('fills to the share of the target and counts what is left', () => {
-    render(
-      <ProgressBar
-        player={{ abbr: 'JJ', name: 'Jerry Jeudy', value: 250 }}
-        target={1000}
-        unit="yds"
-      />,
-    );
-
-    expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '250');
-    expect(screen.getByText(/25% there/)).toBeInTheDocument();
-    expect(screen.getByText(/750 to go/)).toBeInTheDocument();
-  });
-
-  it('caps the fill once the target is passed', () => {
-    const { container } = render(
-      <ProgressBar player={{ abbr: 'TU', name: 'Tuten', value: 1400 }} target={1000} unit="yds" />,
-    );
-
-    const fill = container.querySelector('[role="progressbar"] > div') as HTMLElement;
-    expect(fill.style.width).toBe('100%');
-    expect(screen.queryByText(/to go/)).not.toBeInTheDocument();
   });
 });

@@ -315,6 +315,7 @@ describe('leaning', () => {
         player: { abbr: 'P', name: 'P', value },
         target: 1000,
         direction,
+        gamesPlayed: 4,
       },
     });
 

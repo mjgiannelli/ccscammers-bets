@@ -11,34 +11,33 @@ export interface Week {
 }
 
 export const WEEK: Week = {
-  number: 3,
+  number: 4,
   summary: [
-    "Tim's sitting on 498 with Gerry nine fucking points behind him, which means Gerry gets to " +
-      'spend the entire week refreshing this page like a lunatic instead of enjoying his Sunday. ' +
-      "Mark's at 455 and lurking. Jeff is at 387 and currently paying every other man at the " +
-      'table $300 for the privilege of being here.',
+    'Nothing happened. Not one bet on this entire board changed hands. Everybody sits exactly ' +
+      'where they sat last week, which after a full slate of football is its own kind of ' +
+      'embarrassing. Tim is still up $330 and did not have to do anything for it.',
 
-    'Gerry took the over on Jeudy hitting 1,000 yards. Jeudy has 26. Twenty. Six. Three weeks in ' +
-      "and the man is 974 short — he'd need about 70 a game the rest of the way, which would be a " +
-      'career year for someone currently out-gained by most punters. Gerry has the Tuten over ' +
-      'too. Tuten is on 204, which sounds almost respectable until you do the other half of the ' +
-      'arithmetic and find 796 yards still missing.',
+    'The pool is the one place anyone moved. Tim put up 177 and pulled away to 675, Gerry is on ' +
+      '630, Mark 617, and Jeff is still scraping along the bottom at 523, paying $300 a week for ' +
+      'the pleasure. The gap between second and third is thirteen points. Gerry and Mark are ' +
+      'going to be checking this page at 11pm on a Sunday for the rest of the season and they ' +
+      'both know it.',
 
-    'Sticking with Gerry, because it keeps getting worse: Josh Jacobs has scored zero points. Not ' +
-      'a low number. Zero. Alec Pierce is beating him 14 to nothing, and that is $25 Gerry is ' +
-      'handing over purely for the crime of trusting a running back.',
+    'Actual news: Tuten is on pace. 277 yards through four, which projects out to 1,177 — over ' +
+      'the thousand with room to spare. Gerry has the over on that one, so for the first time in ' +
+      'a month something he touched is not on fire. Enjoy it.',
 
-    "Tim's DJ Moore bet is the easiest $100 anybody has made this season, mostly because AJ Brown " +
-      'has 6 points and appears to have quietly retired without telling his owner. Moore put up ' +
-      '42 and handled it. Then Moore walked straight into Olave at 81, so Tim is down $75 there ' +
-      "and can wipe that grin off. Nobody's clean.",
+    'Because Jeudy is still a disaster. 62 yards. Sixty-two. That projects to 263 on the season, ' +
+      'barely a quarter of what Gerry needs, and he now has to average 73 a game the rest of the ' +
+      'way to get there. He is averaging fifteen and a half.',
 
-    'Two flipped this week. Dowdle finally out-ran Brooks, who is frozen on 8 points and may ' +
-      'legally be deceased, which hands that one to Gerry — the only good news he has had all ' +
-      "month. And Diggs' 46 went past Moore, so Mark claws his $20 back.",
+    'Josh Jacobs has still not scored a point. Four weeks. Zero. Alec Pierce has 14 and has not ' +
+      'done anything either, which tells you exactly how low the bar was. AJ Brown is sat on 6 ' +
+      'and JSN has 144, so Tim keeps the $100 for the DJ Moore bet essentially by default.',
 
-    'Deshaun Watson is somehow still the starting quarterback of the Cleveland Browns, which is ' +
-      "good for Gerry's wallet and terrible for everyone's eyes. Meanwhile Nubes has exactly one " +
-      'bet on this entire board and is losing it. Commit to the bit or get the hell off the page.',
+    'Diggs went to 55 and Moore to 45, which keeps Mark alive on that one. Brooks is still on 8 ' +
+      'and has not moved in three weeks. Watson is still the starting quarterback in Cleveland, ' +
+      'the ball still thinks he is cooked, and Nubes still has exactly one bet and is still ' +
+      'losing it. Same as it ever was.',
   ],
 };

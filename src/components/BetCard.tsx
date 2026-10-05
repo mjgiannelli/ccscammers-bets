@@ -48,7 +48,15 @@ function ProgressView({ progress }: { progress: Progress }) {
     case 'podium':
       return <Podium players={progress.players} unit={progress.unit} />;
     case 'bar':
-      return <ProgressBar player={progress.player} target={progress.target} unit={progress.unit} />;
+      return (
+        <ProgressBar
+          player={progress.player}
+          target={progress.target}
+          unit={progress.unit}
+          gamesPlayed={progress.gamesPlayed}
+          seasonGames={progress.seasonGames}
+        />
+      );
     case 'seesaw':
       return <Seesaw left={progress.left} right={progress.right} unit={progress.unit} />;
     case 'eightBall':

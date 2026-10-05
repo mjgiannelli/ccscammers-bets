@@ -32,10 +32,10 @@ export const BETS: Bet[] = [
       kind: 'podium',
       unit: 'pts',
       players: [
-        { abbr: 'J', name: 'Jeff', value: 387 },
-        { abbr: 'M', name: 'Mark', value: 455 },
-        { abbr: 'G', name: 'Gerry', value: 489 },
-        { abbr: 'T', name: 'Tim', value: 498 },
+        { abbr: 'J', name: 'Jeff', value: 523 },
+        { abbr: 'M', name: 'Mark', value: 617 },
+        { abbr: 'G', name: 'Gerry', value: 630 },
+        { abbr: 'T', name: 'Tim', value: 675 },
       ],
     },
   },
@@ -51,9 +51,10 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rec yds',
-      player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 26 },
+      player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 62 },
       target: 1000,
       direction: 'over',
+      gamesPlayed: 4,
     },
   },
   {
@@ -68,9 +69,10 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rush yds',
-      player: { abbr: 'TU', name: 'Tuten', value: 204 },
+      player: { abbr: 'TU', name: 'Tuten', value: 277 },
       target: 1000,
       direction: 'over',
+      gamesPlayed: 4,
     },
   },
   {
@@ -90,12 +92,12 @@ export const BETS: Bet[] = [
       left: {
         players: [
           { abbr: 'AJB', name: 'AJ Brown', value: 6 },
-          { abbr: 'JSN', name: 'JSN', value: 131 },
+          { abbr: 'JSN', name: 'JSN', value: 144 },
         ],
         reduce: 'min',
         note: 'lower of the two',
       },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
     },
   },
   {
@@ -111,7 +113,7 @@ export const BETS: Bet[] = [
       kind: 'seesaw',
       unit: 'pts',
       left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 81 }] },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
     },
   },
   {
@@ -126,7 +128,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
       right: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 8 }] },
     },
   },
@@ -158,8 +160,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 42 }] },
-      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 46 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
+      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 55 }] },
     },
   },
   {
