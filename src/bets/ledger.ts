@@ -1,4 +1,12 @@
-import { betStatus, effective, everyone, exposure, type Bet, type PoolBet } from './types';
+import {
+  betStatus,
+  effective,
+  everyone,
+  exposure,
+  paceProjection,
+  type Bet,
+  type PoolBet,
+} from './types';
 
 export interface Standing {
   name: string;
@@ -142,9 +150,15 @@ export function leaning(bet: Bet): string | null {
   }
 
   if (progress.kind === 'bar') {
-    const reached = progress.player.value >= progress.target;
-    const forSideAhead = progress.direction === 'under' ? !reached : reached;
-    return forSideAhead ? 'for' : 'against';
+    // Judged on the season this is heading for, not the total so far. A bet to
+    // clear 1,000 yards is behind for most of the autumn no matter who wins it,
+    // and reading it that way would have every threshold bet losing in
+    // September. Pace is the equivalent of which way a see-saw is tipping.
+    const projected = paceProjection(progress);
+    if (projected === null) return null;
+
+    const reaches = projected >= progress.target;
+    return (progress.direction === 'under' ? !reaches : reaches) ? 'for' : 'against';
   }
 
   const left = effective(progress.left).value;

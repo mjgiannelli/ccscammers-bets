@@ -164,3 +164,18 @@ export function effective(side: SeesawSide): Tracked {
         : chosen,
   );
 }
+
+/**
+ * The season total this player is on track for, or `null` before a game has
+ * been played. One definition, used both by the bar that draws the pace and by
+ * the ledger that pays out on it — if those two ever rounded differently, a
+ * card could show green while paying out against.
+ */
+export function paceProjection(bar: {
+  player: Tracked;
+  gamesPlayed: number;
+  seasonGames?: number;
+}): number | null {
+  if (bar.gamesPlayed <= 0) return null;
+  return Math.round((bar.player.value / bar.gamesPlayed) * (bar.seasonGames ?? SEASON_GAMES));
+}

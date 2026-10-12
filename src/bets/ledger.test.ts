@@ -305,9 +305,11 @@ describe('leaning', () => {
     expect(leaning(seesaw(0, 0))).toBeNull();
   });
 
-  // Same number, opposite verdicts: one bet is an over, the other an under.
-  it('reads a yardage bar according to its direction', () => {
-    const bar = (value: number, direction: 'over' | 'under'): Bet => ({
+  // A threshold bet is judged on where the season is heading, not on the total
+  // so far — otherwise every over would be losing until somebody crossed the
+  // line in December.
+  it('reads a yardage bar off its pace, not its total', () => {
+    const bar = (value: number, gamesPlayed: number, direction: 'over' | 'under'): Bet => ({
       ...ONE_VS_FOUR,
       progress: {
         kind: 'bar',
@@ -315,14 +317,51 @@ describe('leaning', () => {
         player: { abbr: 'P', name: 'P', value },
         target: 1000,
         direction,
-        gamesPlayed: 4,
+        gamesPlayed,
       },
     });
 
-    expect(leaning(bar(400, 'under'))).toBe('for');
-    expect(leaning(bar(400, 'over'))).toBe('against');
-    expect(leaning(bar(1200, 'under'))).toBe('against');
-    expect(leaning(bar(1200, 'over'))).toBe('for');
+    // 300 in 5 games projects to 1,020 — over the line despite being 700 short.
+    expect(leaning(bar(300, 5, 'over'))).toBe('for');
+    expect(leaning(bar(300, 5, 'under'))).toBe('against');
+
+    // 200 in 5 projects to 680, and misses.
+    expect(leaning(bar(200, 5, 'over'))).toBe('against');
+    expect(leaning(bar(200, 5, 'under'))).toBe('for');
+  });
+
+  // The same yards mean something different in week 5 than in week 10.
+  it('sours on the same total as the season runs out', () => {
+    const bar = (gamesPlayed: number): Bet => ({
+      ...ONE_VS_FOUR,
+      progress: {
+        kind: 'bar',
+        unit: 'yds',
+        player: { abbr: 'P', name: 'P', value: 300 },
+        target: 1000,
+        direction: 'over',
+        gamesPlayed,
+      },
+    });
+
+    expect(leaning(bar(5))).toBe('for');
+    expect(leaning(bar(10))).toBe('against');
+  });
+
+  it('has no view on a bar before a game has been played', () => {
+    expect(
+      leaning({
+        ...ONE_VS_FOUR,
+        progress: {
+          kind: 'bar',
+          unit: 'yds',
+          player: { abbr: 'P', name: 'P', value: 0 },
+          target: 1000,
+          direction: 'over',
+          gamesPlayed: 0,
+        },
+      }),
+    ).toBeNull();
   });
 
   it('takes a yes-or-no prop straight from the eight ball', () => {

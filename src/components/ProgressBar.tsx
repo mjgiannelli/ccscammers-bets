@@ -1,4 +1,4 @@
-import { SEASON_GAMES, type Tracked } from '../bets/types';
+import { SEASON_GAMES, paceProjection, type Tracked } from '../bets/types';
 
 export function ProgressBar({
   player,
@@ -18,7 +18,7 @@ export function ProgressBar({
 
   // Where this ends up if the rest of the season looks like the start of it.
   const gamesLeft = Math.max(seasonGames - gamesPlayed, 0);
-  const projected = gamesPlayed > 0 ? Math.round((player.value / gamesPlayed) * seasonGames) : 0;
+  const projected = paceProjection({ player, gamesPlayed, seasonGames }) ?? 0;
   const onPace = projected >= target;
   const perGameNeeded = gamesLeft > 0 ? Math.ceil(remaining / gamesLeft) : remaining;
 

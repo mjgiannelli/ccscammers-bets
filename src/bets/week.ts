@@ -16,15 +16,15 @@ export const WEEK: Week = {
     'Mark went past Gerry by nineteen fucking points and took two hundred dollars off him doing ' +
       'it. 745 to 726. That is the margin — less than one decent afternoon from a tight end — ' +
       'and it is the difference between collecting a hundred and writing one. Mark is in the ' +
-      'black at $80 for the first time all year. Gerry is at -$285, which is further underwater ' +
-      'than everybody else on this board combined, and we are five weeks in.',
+      'black at $80 for the first time all year. Gerry is at -$85 and would be buried next to ' +
+      'Jeff if Tuten were not single-handedly keeping him alive.',
 
     'Jeff scored 178 this week. More than Tim. More than anyone. Best week any of you has had ' +
-      'all season and the prick is STILL in last place, twenty-five points off third, still ' +
-      'paying out $300 like clockwork. Imagine playing the best football of your life and the ' +
-      'only thing it buys you is a slightly shorter walk to the bottom. Tim put up 177 for the ' +
-      'second week running, sits on 852, and has not had to think about this league since ' +
-      'September.',
+      'all season — and he is dead last in the pool, twenty-five points off third, AND the worst ' +
+      'man on the board at -$300. He outscored every single person here and went backwards for ' +
+      'it, because Tuten crossing into on-pace territory took another hundred off him on the way ' +
+      'past. Tim put up 177 for the second week running, sits on 852, and has not had to think ' +
+      'about this league since September.',
 
     'Now Gerry. Sit down for this one. Josh Jacobs has not scored a point because Josh Jacobs ' +
       "has not played a down — he has been on the commissioner's exempt list since before the " +
@@ -47,11 +47,12 @@ export const WEEK: Week = {
       'behind him holding a clipboard and a stopwatch. Gerry has built a portfolio that pays him ' +
       'for mediocrity and punishes him for anything better. Genius.',
 
-    'Credit where it is due, and it physically hurts to type this: Tuten is actually good. 349 ' +
-      'through five, on pace for 1,187, needs 55 a game and has been clearing it. Etienne left ' +
-      'for New Orleans, Tuten took the job, and the projections had him at 756. Gerry found the ' +
-      'one correct opinion he will have all season and it is sitting in a pile of the worst ' +
-      'decisions this group has ever witnessed.',
+    'Credit where it is due, and it physically hurts to type this: Tuten is actually good, and ' +
+      'as of this week he is projected to win Gerry that bet. 349 through five, on pace for ' +
+      '1,187, needs 55 a game and has been clearing it comfortably. Etienne left for New ' +
+      'Orleans, Tuten took the job, and every projection in the league had him down for 756. ' +
+      'Gerry found the one correct opinion he will have all season, it is worth a hundred ' +
+      'dollars, and it is the only thing standing between him and the bottom of this page.',
 
     'DJ Moore scored nothing this week, which is not even his fault — AC joint sprain in week ' +
       'two, aggravated it against New England, did not practice at all, and Keon Coleman is ' +
