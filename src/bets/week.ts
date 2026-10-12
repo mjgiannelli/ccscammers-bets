@@ -11,33 +11,37 @@ export interface Week {
 }
 
 export const WEEK: Week = {
-  number: 4,
+  number: 5,
   summary: [
-    'Nothing happened. Not one bet on this entire board changed hands. Everybody sits exactly ' +
-      'where they sat last week, which after a full slate of football is its own kind of ' +
-      'embarrassing. Tim is still up $330 and did not have to do anything for it.',
+    'Mark went past Gerry and the whole board moved with him. Nineteen points is all it was — ' +
+      '745 to 726 — and it swings two hundred dollars, because second place collects a hundred ' +
+      'and third place hands one over. Mark is in the black at $80 for the first time all ' +
+      'season. Gerry is at -$285, which is not just last, it is further back than everyone else ' +
+      'combined.',
 
-    'The pool is the one place anyone moved. Tim put up 177 and pulled away to 675, Gerry is on ' +
-      '630, Mark 617, and Jeff is still scraping along the bottom at 523, paying $300 a week for ' +
-      'the pleasure. The gap between second and third is thirteen points. Gerry and Mark are ' +
-      'going to be checking this page at 11pm on a Sunday for the rest of the season and they ' +
-      'both know it.',
+    'Now the genuinely insulting part. Jeff put up 178 points this week, more than anybody — ' +
+      'more than Tim, more than the guy who just leapfrogged into second — and he is still dead ' +
+      'last. Twenty-five points off third. Best week of his life and he is still writing the ' +
+      'same $300 cheque. Tim, meanwhile, put up 177 for the second week running, has 852, and ' +
+      'at this point is just filling in time.',
 
-    'Actual news: Tuten is on pace. 277 yards through four, which projects out to 1,177 — over ' +
-      'the thousand with room to spare. Gerry has the over on that one, so for the first time in ' +
-      'a month something he touched is not on fire. Enjoy it.',
+    'Tuten remains the one thing Gerry owns that works. 349 yards through five, on pace for ' +
+      '1,187, needs 55 a game and has been clearing that comfortably. Hold that thought.',
 
-    'Because Jeudy is still a disaster. 62 yards. Sixty-two. That projects to 263 on the season, ' +
-      'barely a quarter of what Gerry needs, and he now has to average 73 a game the rest of the ' +
-      'way to get there. He is averaging fifteen and a half.',
+    'Because Jeudy has 81 yards. Five weeks. Eighty-one. That projects to 275 and he now needs ' +
+      '77 a game for the rest of the season to get to a thousand, which is roughly five times ' +
+      'what he has managed so far. Gerry has $100 on that and should consider setting it on fire ' +
+      'instead, for the warmth.',
 
-    'Josh Jacobs has still not scored a point. Four weeks. Zero. Alec Pierce has 14 and has not ' +
-      'done anything either, which tells you exactly how low the bar was. AJ Brown is sat on 6 ' +
-      'and JSN has 144, so Tim keeps the $100 for the DJ Moore bet essentially by default.',
+    'DJ Moore scored nothing this week. Not a low number — nothing. Still on 45, same as last ' +
+      'week, while Olave jumped to 113 and dragged Tim another step into the hole on that one. ' +
+      'The only reason Moore is not costing Tim more is that AJ Brown is somehow still on 6 ' +
+      'points, so that $100 keeps paying out purely because the alternative is worse.',
 
-    'Diggs went to 55 and Moore to 45, which keeps Mark alive on that one. Brooks is still on 8 ' +
-      'and has not moved in three weeks. Watson is still the starting quarterback in Cleveland, ' +
-      'the ball still thinks he is cooked, and Nubes still has exactly one bet and is still ' +
-      'losing it. Same as it ever was.',
+    'Josh Jacobs has now gone five full weeks without scoring a single point, which at this ' +
+      'stage is less a slump than a lifestyle. Alec Pierce has not scored since September either ' +
+      'and is still winning that bet 14 to nothing. Brooks is frozen on 8. Watson is still the ' +
+      'starting quarterback in Cleveland and the ball still does not believe in him. And Nubes ' +
+      'has one bet, is losing it, and has not been heard from since.',
   ],
 };

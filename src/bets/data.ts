@@ -32,10 +32,10 @@ export const BETS: Bet[] = [
       kind: 'podium',
       unit: 'pts',
       players: [
-        { abbr: 'J', name: 'Jeff', value: 523 },
-        { abbr: 'M', name: 'Mark', value: 617 },
-        { abbr: 'G', name: 'Gerry', value: 630 },
-        { abbr: 'T', name: 'Tim', value: 675 },
+        { abbr: 'J', name: 'Jeff', value: 701 },
+        { abbr: 'M', name: 'Mark', value: 745 },
+        { abbr: 'G', name: 'Gerry', value: 726 },
+        { abbr: 'T', name: 'Tim', value: 852 },
       ],
     },
   },
@@ -51,10 +51,10 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rec yds',
-      player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 62 },
+      player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 81 },
       target: 1000,
       direction: 'over',
-      gamesPlayed: 4,
+      gamesPlayed: 5,
     },
   },
   {
@@ -69,10 +69,10 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rush yds',
-      player: { abbr: 'TU', name: 'Tuten', value: 277 },
+      player: { abbr: 'TU', name: 'Tuten', value: 349 },
       target: 1000,
       direction: 'over',
-      gamesPlayed: 4,
+      gamesPlayed: 5,
     },
   },
   {
@@ -92,7 +92,7 @@ export const BETS: Bet[] = [
       left: {
         players: [
           { abbr: 'AJB', name: 'AJ Brown', value: 6 },
-          { abbr: 'JSN', name: 'JSN', value: 144 },
+          { abbr: 'JSN', name: 'JSN', value: 170 },
         ],
         reduce: 'min',
         note: 'lower of the two',
@@ -112,7 +112,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 81 }] },
+      left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 113 }] },
       right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
     },
   },
