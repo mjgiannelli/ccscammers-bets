@@ -14,7 +14,7 @@ export const WEEK: Week = {
   number: 5,
   summary: [
     'Mark went past Gerry by nineteen fucking points and took two hundred dollars off him doing ' +
-      'it. 745 to 726. That is the margin — less than one decent afternoon from a tight end — ' +
+      'it. 786 to 772. That is the margin — less than one decent afternoon from a tight end — ' +
       'and it is the difference between collecting a hundred and writing one. Mark is in the ' +
       'black at $80 for the first time all year. Gerry is at -$85 and would be buried next to ' +
       'Jeff if Tuten were not single-handedly keeping him alive.',
