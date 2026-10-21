@@ -11,71 +11,70 @@ export interface Week {
 }
 
 export const WEEK: Week = {
-  number: 5,
+  number: 6,
   summary: [
-    'Mark is fourteen points ahead of Gerry — 786 to 772 — and that fourteen points is worth two ' +
-      'hundred dollars, because it is the gap between collecting a hundred and writing one. One ' +
-      'bad Sunday from a tight end either way. Both of these men are going to be awake at 11pm ' +
-      'on a Monday watching a kick return they cannot influence, and both of them know it.',
+    'Gerry went past Mark and took two hundred dollars off him on the way. Gerry — the man this ' +
+      'page has spent a fortnight describing as a cautionary tale — is now up $115 and sitting ' +
+      'second. Mark is at -$120. The cautionary tale is beating the guy who commissions the ' +
+      'cautionary tales.',
 
-    'Jeff is a Senior Vice President of Sales at JD Power. His entire industry exists to tell ' +
-      'people who finished first. He has finished fourth. Out of four. The man has spent a career ' +
-      'manufacturing trophies for Highest Ranked In Initial Quality, Mid-Size Segment, Under ' +
-      'Forty Thousand Dollars — a company that will find a category for literally anybody — and ' +
-      'cannot engineer one for himself out of a field of three other guys. He is $300 down. ' +
-      'Highest ranked in nothing.',
+    'Mark wrote this website. He wrote the function that sorts the standings. He wrote the ' +
+      'function that colours a number red. He maintains it every Monday, by hand, and this week ' +
+      'he logged in to find he had built a machine whose sole remaining purpose is to tell four ' +
+      'other men he is fourth out of five. A software developer spent forty hours engineering a ' +
+      'dashboard to monitor four hundred dollars, and the dashboard works perfectly. That is the ' +
+      'tragedy. It is doing exactly what he built it to do.',
 
-    'And he scored 178 this week, more than anybody on the board. Best football of his life. ' +
-      'Finished last, lost another hundred when Tuten crossed into on-pace, and went backwards ' +
-      'on the week. Jeff sells people an award for being good at something. He cannot buy one.',
+    'He also asked, this week specifically, for the write-up to be meaner to him. He asked for ' +
+      'that in the same seven days he dropped two hundred dollars, fell out of the money, and ' +
+      'slipped behind Nubes. Nubes placed one bet in August and has not been seen since. No ' +
+      'messages, no check-ins, no evidence he knows this website exists. He is ninety-five ' +
+      'dollars better off than the man who built it. Mark, the single highest-value move ' +
+      'available to you this season was doing nothing, and a guy who stopped replying beat you ' +
+      'to it.',
 
-    'Gerry originates mortgages. Forty hours a week deciding whether a stranger is good for the ' +
-      'money — income verification, employment history, the whole ritual. He then put $25 on ' +
-      "Josh Jacobs, who has been on the commissioner's exempt list since before week one and has " +
-      'not been on a football field all season. No employment. No income. Gerry did not check. ' +
-      'Alec Pierce is beating him fourteen to nothing and Alec Pierce has not got out of bed ' +
-      'since September.',
+    'His roster is a hospice. Jonathan Brooks: eight points, has not moved since September. Alec ' +
+      'Pierce: fourteen points, has not moved since September. Pierce is somehow winning his ' +
+      'bet, and only because the man opposite him is Josh Jacobs, who has been on the ' +
+      "commissioner's exempt list since before week one and has not played a down all year. " +
+      "Mark's entire winning position this season rests on one guy being inert and another guy " +
+      'being unavailable for selection. Diggs at 72 is the only player on his team with a pulse.',
 
-    'He also has $100 on Jerry Jeudy reaching a thousand yards. Jeudy has 81. He led the entire ' +
-      'NFL in drops last season with a catch rate under 50%, Cleveland used two picks on ' +
-      'receivers specifically to take his job, and the man throwing to him is Deshaun Watson. ' +
-      'Gerry needs 77 yards a game from a guy averaging sixteen who cannot catch. A professional ' +
-      'risk assessor looked at that and said yes. Twice, if you count that he also has money on ' +
-      'Watson keeping the job — so one bet needs Watson to be good and the other needs him to ' +
-      'merely still be breathing. Gerry has built a portfolio that pays him for mediocrity and ' +
-      'punishes anything better. In his defence, it is the only thing he has done all year that ' +
-      'is internally consistent.',
+    'Gerry and Tim both originate mortgages, which means two of the four men on this board send ' +
+      'unsolicited texts that open with "rates just moved — got 10 minutes?" Both own the same ' +
+      'quarter-zip. Both have a headshot with the arms folded. Same job, same training, same ' +
+      'professional obligation to look at numbers and detect a lie, and there is $215 between ' +
+      'them. One of them is qualified to assess your risk profile and the other one has $25 on a ' +
+      'man who is not currently permitted to earn an income. Shop accordingly.',
 
-    'Tim does the exact same job as Gerry. Same industry, same training, same professional ' +
-      'obligation to look at a set of numbers and work out whether they are lying to you. Tim is ' +
-      'up $330. Gerry is down $85 and owns a running back who is contractually unable to run. If ' +
-      'you are shopping for a loan in this town, that is the single most useful piece of ' +
-      'information in this entire write-up.',
+    'Credit to Gerry, and it is genuinely painful: Tuten cleared the pace line by thirty-four ' +
+      'yards. 388 through six, projecting 1,099, and that hundred stays with him for another ' +
+      'week. A month ago he was $285 in the hole. He is now in profit. The worst gambler in this ' +
+      'group has had the single best fortnight in it, which should tell the rest of you ' +
+      'something unpleasant about your own process.',
 
-    'Though let us be honest about how Tim got there. He proposed half these bets. He wrote the ' +
-      'lines and then took the side he liked, which is not gambling, that is market making. His ' +
-      'one big winner is DJ Moore over AJ Brown, and that is only still a winner because Brown ' +
-      'got shipped to New England and has produced 6 points, which is not a slump, that is a ' +
-      'missing persons case. Moore meanwhile has not scored since week two — AC joint sprain, ' +
-      'did not practice, Keon Coleman quietly eating his lunch in Buffalo — and Olave ran off to ' +
-      '113 while he sat there. Tim is collecting a hundred dollars purely because somebody else ' +
-      'is worse at this than he is. That is the whole strategy and it is working.',
+    'Jeudy got 69 yards this week and people are calling it a bounce-back. He is on 150. He ' +
+      'projects to 425. Gerry needs 78 a game from here, from a man averaging twenty-five, who ' +
+      'led the league in drops last season, whose team drafted two receivers to take his job, ' +
+      'catching passes from Deshaun Watson. The ball on the other card says the outlook is not ' +
+      'so good and it is being generous.',
 
-    'Mark is a software developer who built an entire web application to track nine bets worth ' +
-      'about four hundred dollars. Standings. Projections. A magic 8-ball. He has shipped more ' +
-      'code this season than Jonathan Brooks has scored points, which sounds impressive until ' +
-      'you learn Brooks has eight and has not moved in a month. Mark also controls what this ' +
-      'page says about everyone. Mark is in second place and has written himself the shortest ' +
-      'paragraph. Draw your own conclusions.',
+    'Jeff is a Senior Vice President of Sales at JD Power. He works for the awards industry. His ' +
+      'profession is the manufacture of first place — Highest Ranked In Initial Quality, ' +
+      'Mid-Size Segment, a company that will invent a category so narrow that literally anyone ' +
+      'can win it — and he cannot conjure one for himself out of a field of four. He scored 135 ' +
+      'this week. It moved him nowhere. He is last, he is -$300, and he is the only man here who ' +
+      'could have the trophy drawn up by Thursday.',
 
-    'Credit where it is owed, grudgingly: Tuten is on pace for 1,187 and is now projected to win ' +
-      'Gerry that hundred. Etienne left for New Orleans, Tuten took the job, every projection in ' +
-      'the league had him at 756. It is the one correct read Gerry will have all season and it ' +
-      'is the only thing between him and the bottom of this page.',
+    'Tim is on 1,015 and up $330 and has not had to think about this league since September. He ' +
+      'proposed most of these bets, wrote the lines himself, then took the side he fancied. That ' +
+      'is not gambling, that is market making, and the rest of you walked into it holding your ' +
+      'wallets open. His DJ Moore bet is still paying purely because AJ Brown got traded to New ' +
+      'England and has 12 points in six games, which is not a slump, that is a welfare case.',
 
-    'And Nubes has one bet. One. On a board with nine of them. He is losing it, has not been ' +
-      'heard from in a month, and is down $25 — less than everyone except Tim and Mark. He has ' +
-      'achieved almost nothing and it has cost him almost nothing. Statistically he is playing ' +
-      'this better than three of you.',
+    'DJ Moore has been frozen on 45 for four straight weeks — shoulder, never quite ruled out, ' +
+      'never quite plays — and he is load-bearing for four separate bets on this board. Four ' +
+      'grown men have money riding on a receiver who has not done anything since September. ' +
+      'Honestly, at this point he fits right in.',
   ],
 };
