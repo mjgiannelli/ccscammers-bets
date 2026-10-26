@@ -54,6 +54,7 @@ export const BETS: Bet[] = [
       player: { abbr: 'JJ', name: 'Jerry Jeudy', value: 171 },
       target: 1000,
       direction: 'over',
+      // Cleveland's bye is week 11, so he has played every week so far.
       gamesPlayed: 7,
     },
   },
@@ -72,7 +73,9 @@ export const BETS: Bet[] = [
       player: { abbr: 'TU', name: 'Tuten', value: 388 },
       target: 1000,
       direction: 'over',
-      gamesPlayed: 7,
+      // Jacksonville were on bye in week 7. Games played, not weeks elapsed —
+      // counting the bye would dock his pace for a week he never took the field.
+      gamesPlayed: 6,
     },
   },
   {
