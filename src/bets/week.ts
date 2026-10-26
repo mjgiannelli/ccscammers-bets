@@ -11,70 +11,57 @@ export interface Week {
 }
 
 export const WEEK: Week = {
-  number: 6,
+  number: 7,
   summary: [
-    'Gerry went past Mark and took two hundred dollars off him on the way. Gerry — the man this ' +
-      'page has spent a fortnight describing as a cautionary tale — is now up $115 and sitting ' +
-      'second. Mark is at -$120. The cautionary tale is beating the guy who commissions the ' +
-      'cautionary tales.',
+    'Mark scored 205 this week. Most on the board. More than Tim, more than Gerry, more than ' +
+      'anybody. He is now in last place. Not last in the pool — last on the money, -$170, below ' +
+      'Jeff, below Nubes, below a man who has not opened this website since August. Mark had the ' +
+      'best week of anybody here and it dropped him to the bottom of his own leaderboard. He ' +
+      'wrote the sorting function that put him there.',
 
-    'Mark wrote this website. He wrote the function that sorts the standings. He wrote the ' +
-      'function that colours a number red. He maintains it every Monday, by hand, and this week ' +
-      'he logged in to find he had built a machine whose sole remaining purpose is to tell four ' +
-      'other men he is fourth out of five. A software developer spent forty hours engineering a ' +
-      'dashboard to monitor four hundred dollars, and the dashboard works perfectly. That is the ' +
-      'tragedy. It is doing exactly what he built it to do.',
+    'Here is how. Last week this page observed that his entire winning position rested on one ' +
+      'guy being inert and another guy being unavailable for selection. Seven days later Josh ' +
+      'Jacobs got cleared, played at Detroit, and put up 24 points in a single afternoon — more ' +
+      'than Alec Pierce has managed since September. Mark was beating a man who was not allowed ' +
+      'on the field, and the second that stopped being true, so did the bet. That is not bad ' +
+      'luck. That was the whole plan and everybody could see it.',
 
-    'He also asked, this week specifically, for the write-up to be meaner to him. He asked for ' +
-      'that in the same seven days he dropped two hundred dollars, fell out of the money, and ' +
-      'slipped behind Nubes. Nubes placed one bet in August and has not been seen since. No ' +
-      'messages, no check-ins, no evidence he knows this website exists. He is ninety-five ' +
-      'dollars better off than the man who built it. Mark, the single highest-value move ' +
-      'available to you this season was doing nothing, and a guy who stopped replying beat you ' +
-      'to it.',
+    'Gerry had the opposite week and still found a way to bleed. Jacobs coming back hands him ' +
+      '$25. Then Tuten gained nothing at all — not a yard, not a carry worth reporting — and ' +
+      'because the season moved on without him, his projection fell from 1,099 to 942 and ' +
+      'dropped under the line. That is a hundred dollars gone on a week where his guy did not ' +
+      'so much as show up. Gerry goes from +$115 to -$35. The man sells mortgages. He should ' +
+      'know better than anyone what happens when you stop making payments.',
 
-    'His roster is a hospice. Jonathan Brooks: eight points, has not moved since September. Alec ' +
-      'Pierce: fourteen points, has not moved since September. Pierce is somehow winning his ' +
-      'bet, and only because the man opposite him is Josh Jacobs, who has been on the ' +
-      "commissioner's exempt list since before week one and has not played a down all year. " +
-      "Mark's entire winning position this season rests on one guy being inert and another guy " +
-      'being unavailable for selection. Diggs at 72 is the only player on his team with a pulse.',
+    'Jeudy is on 171 after seven games. 171. He projects 415 against a thousand. Gerry needs 83 ' +
+      'a game from him for the rest of the season, from a receiver averaging twenty-four, who ' +
+      'led the league in drops last year, whose team spent two picks on his replacement, ' +
+      'catching from Deshaun Watson. The eight-ball on the next card says the outlook is not so ' +
+      'good. The eight-ball is an optimist.',
 
-    'Gerry and Tim both originate mortgages, which means two of the four men on this board send ' +
-      'unsolicited texts that open with "rates just moved — got 10 minutes?" Both own the same ' +
-      'quarter-zip. Both have a headshot with the arms folded. Same job, same training, same ' +
-      'professional obligation to look at numbers and detect a lie, and there is $215 between ' +
-      'them. One of them is qualified to assess your risk profile and the other one has $25 on a ' +
-      'man who is not currently permitted to earn an income. Shop accordingly.',
+    'Tim is on 1,214 and has not moved off $330 in a month. Not because he is doing anything — ' +
+      'because every bet he is in has been decided since September and he picked the right side ' +
+      'of all of them in August. He wrote most of these lines himself, then took the side he ' +
+      'liked, and the rest of you signed up. Mortgage originator by trade. He has spent his ' +
+      "career on the correct end of other people's optimism and he is not going to stop now.",
 
-    'Credit to Gerry, and it is genuinely painful: Tuten cleared the pace line by thirty-four ' +
-      'yards. 388 through six, projecting 1,099, and that hundred stays with him for another ' +
-      'week. A month ago he was $285 in the hole. He is now in profit. The worst gambler in this ' +
-      'group has had the single best fortnight in it, which should tell the rest of you ' +
-      'something unpleasant about your own process.',
+    'Jeff put up 173 and stayed exactly where he was, which is becoming his signature move. ' +
+      'Senior Vice President of Sales at JD Power — a company whose entire output is a trophy ' +
+      'with a category invented around whoever bought one — and the man finishes fourth in a ' +
+      'field of four, week after week, like a metronome. Mark overtook him going downwards, ' +
+      'which is the only promotion Jeff has had all year.',
 
-    'Jeudy got 69 yards this week and people are calling it a bounce-back. He is on 150. He ' +
-      'projects to 425. Gerry needs 78 a game from here, from a man averaging twenty-five, who ' +
-      'led the league in drops last season, whose team drafted two receivers to take his job, ' +
-      'catching passes from Deshaun Watson. The ball on the other card says the outlook is not ' +
-      'so good and it is being generous.',
+    'DJ Moore has now been frozen on 45 points for five consecutive weeks. The shoulder. Never ' +
+      'ruled out, never actually plays, turns up on the injury report every Friday like a ghost ' +
+      'with a season ticket. Four separate bets on this board depend on him and he has not ' +
+      'contributed a thing to any of them since September. Jonathan Brooks is on 8 and has not ' +
+      'moved since the first month. Alec Pierce is on 14 and has not moved since the first ' +
+      'month. Between the three of them that is roughly $90 of live action riding on men who ' +
+      'have functionally retired.',
 
-    'Jeff is a Senior Vice President of Sales at JD Power. He works for the awards industry. His ' +
-      'profession is the manufacture of first place — Highest Ranked In Initial Quality, ' +
-      'Mid-Size Segment, a company that will invent a category so narrow that literally anyone ' +
-      'can win it — and he cannot conjure one for himself out of a field of four. He scored 135 ' +
-      'this week. It moved him nowhere. He is last, he is -$300, and he is the only man here who ' +
-      'could have the trophy drawn up by Thursday.',
-
-    'Tim is on 1,015 and up $330 and has not had to think about this league since September. He ' +
-      'proposed most of these bets, wrote the lines himself, then took the side he fancied. That ' +
-      'is not gambling, that is market making, and the rest of you walked into it holding your ' +
-      'wallets open. His DJ Moore bet is still paying purely because AJ Brown got traded to New ' +
-      'England and has 12 points in six games, which is not a slump, that is a welfare case.',
-
-    'DJ Moore has been frozen on 45 for four straight weeks — shoulder, never quite ruled out, ' +
-      'never quite plays — and he is load-bearing for four separate bets on this board. Four ' +
-      'grown men have money riding on a receiver who has not done anything since September. ' +
-      'Honestly, at this point he fits right in.',
+    'And Nubes is still sitting on one bet, down $25, having not said a word since August — ' +
+      'which this week makes him the second-best performer in the entire league. Four men are ' +
+      'actively managing their positions and three of them are losing to a guy who stopped ' +
+      'participating. Think about that one for a while.',
   ],
 };
