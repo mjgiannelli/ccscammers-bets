@@ -11,25 +11,31 @@ export interface Week {
 }
 
 export const WEEK: Week = {
-  number: 7,
+  number: 8,
   summary: [
-    'Mark scored 205 this week, the most on the board, and dropped to -$170 for it. Fourth of ' +
-      'five. He also wrote the sorting function that ranked him there.',
+    'A full week of football and not a single one of these ten bets changed hands. Same money, ' +
+      'same order, same five men. Everyone played, nobody moved.',
 
-    'The Jacobs bet is why. This page noted last week that his position depended on a man being ' +
-      'unavailable to play. Jacobs was cleared on the 19th, played Detroit on the 25th, and put ' +
-      'up 24 in an afternoon — more than Alec Pierce has managed since September. The plan ' +
-      'lasted exactly as long as the circumstances did.',
+    'Jeff scored 214, the most on the board, and remains -$300 and last. That is twice now he ' +
+      'has topped the scoring and gained nothing from it. He is reliably the best player here ' +
+      'for seven days at a time and reliably the poorest for the other twenty-four weeks, which ' +
+      'is a genuinely difficult thing to arrange.',
 
-    'Gerry should have lost a hundred and did not. Tuten gained nothing at all, which read like ' +
-      'a collapse until somebody checked the schedule: Jacksonville were on bye. He did not have ' +
-      'a bad week, he had no week. The pace holds, the hundred stays, and Gerry is up to $165 — ' +
-      'the only man in profit here besides Tim, which nobody saw coming a fortnight ago.',
+    'The pool is suddenly a race. Gerry is 27 points behind Tim — 1,350 to 1,377 — after Tim has ' +
+      'spent two months not having to look at it. One of those men has been coasting since ' +
+      'September and the other has been quietly closing, and the $400 between first and last ' +
+      'suddenly has a question attached to it.',
 
-    'Jeudy reached 171 and projects 415. Gerry needs 83 a game from here. There is nothing more ' +
-      'to say about it that the number does not already say.',
+    'DJ Moore finally scored. Shoulder since the Detroit game in week two, re-aggravated it ' +
+      'against New England, sat out week six, had the bye to recover, and came back against ' +
+      'Baltimore — 45 up to 64. It changed absolutely nothing. All four of his bets were decided ' +
+      'weeks before he made it back onto a field. A man returns from a two-month injury, ' +
+      'contributes, and the board does not so much as blink.',
 
-    'Tim: 1,214, +$330, has not moved in a month. Jeff: 173 points, -$300, and last — the only ' +
-      'position he has managed to hold all season.',
+    'Tuten put up 104 and projects 1,195, the safest Gerry has felt about anything all year. ' +
+      'Jeudy caught nothing. Not a quiet afternoon — zero receptions, zero yards, in a 6-27 ' +
+      'defeat at Pittsburgh. He is on sixteen catches and no touchdowns through eight games, so ' +
+      'Gerry has a hundred dollars on a thousand-yard season from a man who has not reached an ' +
+      'end zone all year. 171 yards. Projecting 363.',
   ],
 };

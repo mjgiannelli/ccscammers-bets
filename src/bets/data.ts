@@ -32,10 +32,10 @@ export const BETS: Bet[] = [
       kind: 'podium',
       unit: 'pts',
       players: [
-        { abbr: 'J', name: 'Jeff', value: 1020 },
-        { abbr: 'M', name: 'Mark', value: 1112 },
-        { abbr: 'G', name: 'Gerry', value: 1172 },
-        { abbr: 'T', name: 'Tim', value: 1214 },
+        { abbr: 'J', name: 'Jeff', value: 1234 },
+        { abbr: 'M', name: 'Mark', value: 1282 },
+        { abbr: 'G', name: 'Gerry', value: 1350 },
+        { abbr: 'T', name: 'Tim', value: 1377 },
       ],
     },
   },
@@ -55,7 +55,7 @@ export const BETS: Bet[] = [
       target: 1000,
       direction: 'over',
       // Cleveland's bye is week 11, so he has played every week so far.
-      gamesPlayed: 7,
+      gamesPlayed: 8,
     },
   },
   {
@@ -70,12 +70,12 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'bar',
       unit: 'rush yds',
-      player: { abbr: 'TU', name: 'Tuten', value: 388 },
+      player: { abbr: 'TU', name: 'Tuten', value: 492 },
       target: 1000,
       direction: 'over',
-      // Jacksonville were on bye in week 7. Games played, not weeks elapsed —
-      // counting the bye would dock his pace for a week he never took the field.
-      gamesPlayed: 6,
+      // Jacksonville were on bye in week 7, so he stays a game behind the
+      // calendar. Games played, not weeks elapsed.
+      gamesPlayed: 7,
     },
   },
   {
@@ -95,12 +95,12 @@ export const BETS: Bet[] = [
       left: {
         players: [
           { abbr: 'AJB', name: 'AJ Brown', value: 20 },
-          { abbr: 'JSN', name: 'JSN', value: 240 },
+          { abbr: 'JSN', name: 'JSN', value: 272 },
         ],
         reduce: 'min',
         note: 'lower of the two',
       },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 64 }] },
     },
   },
   {
@@ -116,7 +116,7 @@ export const BETS: Bet[] = [
       kind: 'seesaw',
       unit: 'pts',
       left: { players: [{ abbr: 'OLV', name: 'Chris Olave', value: 140 }] },
-      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
+      right: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 64 }] },
     },
   },
   {
@@ -131,7 +131,7 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 64 }] },
       right: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 8 }] },
     },
   },
@@ -148,7 +148,7 @@ export const BETS: Bet[] = [
       kind: 'seesaw',
       unit: 'pts',
       left: { players: [{ abbr: 'BRK', name: 'Jonathan Brooks', value: 8 }] },
-      right: { players: [{ abbr: 'DOW', name: 'Rico Dowdle', value: 35 }] },
+      right: { players: [{ abbr: 'DOW', name: 'Rico Dowdle', value: 47 }] },
     },
   },
   {
@@ -163,8 +163,8 @@ export const BETS: Bet[] = [
     progress: {
       kind: 'seesaw',
       unit: 'pts',
-      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 45 }] },
-      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 72 }] },
+      left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 64 }] },
+      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 85 }] },
     },
   },
   {
@@ -180,7 +180,7 @@ export const BETS: Bet[] = [
       kind: 'seesaw',
       unit: 'pts',
       left: { players: [{ abbr: 'AP', name: 'Alec Pierce', value: 14 }] },
-      right: { players: [{ abbr: 'JAC', name: 'Josh Jacobs', value: 24 }] },
+      right: { players: [{ abbr: 'JAC', name: 'Josh Jacobs', value: 48 }] },
     },
   },
   {
