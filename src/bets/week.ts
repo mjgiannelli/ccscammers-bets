@@ -11,31 +11,32 @@ export interface Week {
 }
 
 export const WEEK: Week = {
-  number: 8,
+  number: 9,
   summary: [
-    'A full week of football and not a single one of these ten bets changed hands. Same money, ' +
-      'same order, same five men. Everyone played, nobody moved.',
+    'Thirteen points separate Mark from Gerry — 1,467 to 1,454 — and that thirteen is worth two ' +
+      'hundred dollars, because it is the line between second and third. Mark scored 172 this ' +
+      'week, most on the board, and pulled 55 points back. He is still third. He is still -$170.',
 
-    'Jeff scored 214, the most on the board, and remains -$300 and last. That is twice now he ' +
-      'has topped the scoring and gained nothing from it. He is reliably the best player here ' +
-      'for seven days at a time and reliably the poorest for the other twenty-four weeks, which ' +
-      'is a genuinely difficult thing to arrange.',
+    'Which brings us to Jonathan Brooks, who has eight points, and has had eight points since ' +
+      'September, because Carolina put him on injured reserve on the 23rd after core muscle ' +
+      'surgery and he has not taken a snap since. Mark holds two separate bets that require ' +
+      'Brooks to outscore somebody. A fortnight ago this page noted he had built a position on a ' +
+      'man who was not available to play. He did it twice, in the same season, and the second ' +
+      'one has been in a hospital gown for seven weeks.',
 
-    'The pool is suddenly a race. Gerry is 27 points behind Tim — 1,350 to 1,377 — after Tim has ' +
-      'spent two months not having to look at it. One of those men has been coasting since ' +
-      'September and the other has been quietly closing, and the $400 between first and last ' +
-      'suddenly has a question attached to it.',
+    'Tuten gained 29 yards and his projection slid from 1,195 to 1,107. Still clear, still ' +
+      "Gerry's hundred, but the line he has to beat climbs every Sunday whether he turns up or " +
+      'not, and he has had one real week in the last three. That cushion was 195 yards. It is ' +
+      'now 107.',
 
-    'DJ Moore finally scored. Shoulder since the Detroit game in week two, re-aggravated it ' +
-      'against New England, sat out week six, had the bye to recover, and came back against ' +
-      'Baltimore — 45 up to 64. It changed absolutely nothing. All four of his bets were decided ' +
-      'weeks before he made it back onto a field. A man returns from a two-month injury, ' +
-      'contributes, and the board does not so much as blink.',
+    'Jeudy caught something, which this season counts as news. Thirty-seven yards, up to 208, ' +
+      'projecting 393. To get home he needs 792 yards from eight games — 99 a game, from a man ' +
+      'averaging twenty-three. That is not a bounce-back, that is a different player wearing the ' +
+      'same shirt.',
 
-    'Tuten put up 104 and projects 1,195, the safest Gerry has felt about anything all year. ' +
-      'Jeudy caught nothing. Not a quiet afternoon — zero receptions, zero yards, in a 6-27 ' +
-      'defeat at Pittsburgh. He is on sixteen catches and no touchdowns through eight games, so ' +
-      'Gerry has a hundred dollars on a thousand-yard season from a man who has not reached an ' +
-      'end zone all year. 171 yards. Projecting 363.',
+    'Nothing changed hands. Second week running. Tim sits on +$330 and has not had to think ' +
+      'about this league since September, while Jeff has outscored him in three of the last five ' +
+      'weeks and is still -$300. The board has stopped moving, and the only live question left ' +
+      'on it is whether Mark can find thirteen points.',
   ],
 };
