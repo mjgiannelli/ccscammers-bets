@@ -11,32 +11,28 @@ export interface Week {
 }
 
 export const WEEK: Week = {
-  number: 9,
+  number: 10,
   summary: [
-    'Thirteen points separate Mark from Gerry — 1,467 to 1,454 — and that thirteen is worth two ' +
-      'hundred dollars, because it is the line between second and third. Mark scored 172 this ' +
-      'week, most on the board, and pulled 55 points back. He is still third. He is still -$170.',
+    'Gerry scored 125 in the week the other three all cleared 185, and it has cost him ' +
+      'everything. Second to last in the pool, which is a four hundred dollar swing on that bet ' +
+      'by itself, and +$165 to -$235 overall. A fortnight ago he was the comeback story of the ' +
+      'season. He is now further behind than anybody has been all year.',
 
-    'Which brings us to Jonathan Brooks, who has eight points, and has had eight points since ' +
-      'September, because Carolina put him on injured reserve on the 23rd after core muscle ' +
-      'surgery and he has not taken a snap since. Mark holds two separate bets that require ' +
-      'Brooks to outscore somebody. A fortnight ago this page noted he had built a position on a ' +
-      'man who was not available to play. He did it twice, in the same season, and the second ' +
-      'one has been in a hospital gown for seven weeks.',
+    'Mark is in profit. +$30, second in the pool, ahead of Gerry for the first time since week ' +
+      'six. He managed it by scoring 189, which this week was only good enough for third best, ' +
+      'and by standing still while somebody else fell past him.',
 
-    'Tuten gained 29 yards and his projection slid from 1,195 to 1,107. Still clear, still ' +
-      "Gerry's hundred, but the line he has to beat climbs every Sunday whether he turns up or " +
-      'not, and he has had one real week in the last three. That cushion was 195 yards. It is ' +
-      'now 107.',
+    'Jeff put up 225, the most on the board, and for the first time all season it actually moved ' +
+      'him. Three separate weeks he has topped the scoring and finished exactly where he ' +
+      'started. This time he is third and -$100, though it should be said the climb was less ' +
+      'about Jeff rising than Gerry dropping through him on the way down.',
 
-    'Jeudy caught something, which this season counts as news. Thirty-seven yards, up to 208, ' +
-      'projecting 393. To get home he needs 792 yards from eight games — 99 a game, from a man ' +
-      'averaging twenty-three. That is not a bounce-back, that is a different player wearing the ' +
-      'same shirt.',
+    'Josh Jacobs has stopped on 49 — fractured a finger against New England in week nine, sat ' +
+      'out Minnesota. He is winning Gerry that bet by thirty-five points while not playing, ' +
+      'which is thirty-five more than Alec Pierce has managed since September.',
 
-    'Nothing changed hands. Second week running. Tim sits on +$330 and has not had to think ' +
-      'about this league since September, while Jeff has outscored him in three of the last five ' +
-      'weeks and is still -$300. The board has stopped moving, and the only live question left ' +
-      'on it is whether Mark can find thirteen points.',
+    'Jeudy had the best week of his season, 74 yards, up to 282 — and still projects 479, which ' +
+      'tells you everything about the other nine. Tuten added 88, back up to 1,150, cushion ' +
+      "restored. That hundred is now the only thing on this entire board going Gerry's way.",
   ],
 };
