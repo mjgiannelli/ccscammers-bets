@@ -375,6 +375,62 @@ describe('leaning', () => {
     expect(leaning(ball(null))).toBeNull();
   });
 
+  it('backs whichever lineup is ahead, by manager and not by column', () => {
+    const matchup = (gerry: number, mark: number): Bet => ({
+      ...ONE_VS_FOUR,
+      for: ['Gerry'],
+      against: ['Mark'],
+      progress: {
+        kind: 'lineup',
+        unit: 'pts',
+        week: 11,
+        left: {
+          team: 'Northern Crush',
+          manager: 'Gerry',
+          players: [{ slot: 'QB', name: 'a', points: gerry }],
+        },
+        right: {
+          team: 'Florida Phatties',
+          manager: 'Mark',
+          players: [{ slot: 'QB', name: 'b', points: mark }],
+        },
+      },
+    });
+
+    expect(leaning(matchup(90, 40))).toBe('for');
+    expect(leaning(matchup(40, 90))).toBe('against');
+    expect(leaning(matchup(0, 0))).toBeNull();
+  });
+
+  // Swapping which column each team sits in must not move the money.
+  it('is unmoved by flipping the two lineups round', () => {
+    const sides = {
+      crush: {
+        team: 'Northern Crush',
+        manager: 'Gerry',
+        players: [{ slot: 'QB', name: 'a', points: 90 }],
+      },
+      phatties: {
+        team: 'Florida Phatties',
+        manager: 'Mark',
+        players: [{ slot: 'QB', name: 'b', points: 40 }],
+      },
+    };
+    const base = { ...ONE_VS_FOUR, for: ['Gerry'], against: ['Mark'] };
+
+    const asDrawn: Bet = {
+      ...base,
+      progress: { kind: 'lineup', unit: 'pts', week: 11, left: sides.crush, right: sides.phatties },
+    };
+    const flipped: Bet = {
+      ...base,
+      progress: { kind: 'lineup', unit: 'pts', week: 11, left: sides.phatties, right: sides.crush },
+    };
+
+    expect(leaning(asDrawn)).toBe('for');
+    expect(leaning(flipped)).toBe('for');
+  });
+
   // A pool has no single side to back, so it has no leaning; use `ladder`.
   it('has no opinion on a pool', () => {
     expect(leaning(scoredPool([10, 40, 5, 2]))).toBeNull();

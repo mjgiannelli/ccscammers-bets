@@ -111,6 +111,24 @@ export interface SeesawSide {
 /** A full NFL regular season. */
 export const SEASON_GAMES = 17;
 
+export interface LineupPlayer {
+  /** Roster slot: QB, RB, WR, TE, FLEX, K, D/ST. */
+  slot: string;
+  name: string;
+  points: number;
+}
+
+export interface LineupSide {
+  team: string;
+  /**
+   * Whose team it is. Not drawn on the card — it is how the ledger works out
+   * which bettor a side belongs to, so the layout can sit either way round
+   * without the money following it.
+   */
+  manager: string;
+  players: LineupPlayer[];
+}
+
 export type Progress =
   /** Ranked standing: the bigger the number, the higher the step. */
   | { kind: 'podium'; unit: string; players: Tracked[] }
@@ -147,7 +165,13 @@ export type Progress =
    * the yes/no label come from `answer` alone. Keep it to roughly four short
    * words so it stays inside the die.
    */
-  | { kind: 'eightBall'; question: string; answer: boolean | null; phrase?: string };
+  | { kind: 'eightBall'; question: string; answer: boolean | null; phrase?: string }
+  /**
+   * A head-to-head fantasy matchup: two rosters in the same slot order, with
+   * each side's total summed from its players rather than stored, so the
+   * header can never disagree with the rows.
+   */
+  | { kind: 'lineup'; unit: string; week: number; left: LineupSide; right: LineupSide };
 
 /** The player on a see-saw side whose number is actually in play right now. */
 export function effective(side: SeesawSide): Tracked {
@@ -178,4 +202,9 @@ export function paceProjection(bar: {
 }): number | null {
   if (bar.gamesPlayed <= 0) return null;
   return Math.round((bar.player.value / bar.gamesPlayed) * (bar.seasonGames ?? SEASON_GAMES));
+}
+
+/** A lineup's score, summed from its players. Never stored, so never stale. */
+export function lineupTotal(side: LineupSide): number {
+  return Math.round(side.players.reduce((sum, player) => sum + player.points, 0) * 10) / 10;
 }

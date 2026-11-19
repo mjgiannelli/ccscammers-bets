@@ -3,6 +3,7 @@ import {
   effective,
   everyone,
   exposure,
+  lineupTotal,
   paceProjection,
   type Bet,
   type PoolBet,
@@ -143,6 +144,20 @@ export function leaning(bet: Bet): string | null {
 
   // A pool has no single side to lean toward; every player sits on a rung.
   if (progress.kind === 'podium') return null;
+
+  if (progress.kind === 'lineup') {
+    const ahead =
+      lineupTotal(progress.left) === lineupTotal(progress.right)
+        ? null
+        : lineupTotal(progress.left) > lineupTotal(progress.right)
+          ? progress.left
+          : progress.right;
+    if (!ahead) return null;
+
+    // Read off the manager rather than which column the side sits in, so the
+    // layout can be flipped without quietly moving the money.
+    return bet.format === 'headToHead' && bet.for.includes(ahead.manager) ? 'for' : 'against';
+  }
 
   if (progress.kind === 'eightBall') {
     if (progress.answer === null) return null;
