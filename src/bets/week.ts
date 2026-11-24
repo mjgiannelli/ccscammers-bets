@@ -13,9 +13,10 @@ export interface Week {
 export const WEEK: Week = {
   number: 11,
   summary: [
-    'One point. DJ Moore 120, Diggs 119. That is the whole margin on a bet that had been ' +
-      "Mark's since September, and it has gone the other way — twenty dollars to Tim, who " +
-      'earned it by owning the man who bothered to turn up.',
+    'One point, and the week is not finished. DJ Moore 120, Diggs 119, with Diggs still to play ' +
+      "tonight. So that bet has been Mark's since September, belongs to Tim as of this " +
+      "sentence, and will in all likelihood be Mark's again by breakfast. Twenty dollars " +
+      'hanging on a Monday night.',
 
     "So here is Mark's week in full. He beat Gerry 154 to 127 in the head-to-head and took ten " +
       'dollars off him. He lost twenty on a single point of Stefon Diggs. He finished on exactly ' +
@@ -28,7 +29,8 @@ export const WEEK: Week = {
 
     'Four of the frozen numbers have an alibi — Jacobs, JSN, AJ Brown and Jeudy were all on bye. ' +
       'Alec Pierce does not. Indianapolis played, Pierce played, Pierce scored nothing, and he ' +
-      'is still sitting on the fourteen points he had in September. Brooks is on eight and has ' +
+      'is still sitting on the fourteen points he had in September. Diggs is a separate case — ' +
+      'he has not been on a bye, he has simply not played yet. Brooks is on eight and has ' +
       'been on injured reserve since the twenty-third of that month, which at this stage is the ' +
       'more dignified way to contribute nothing.',
 
