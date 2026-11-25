@@ -32,8 +32,8 @@ export const BETS: Bet[] = [
       kind: 'podium',
       unit: 'pts',
       players: [
-        { abbr: 'J', name: 'Jeff', value: 1750 },
-        { abbr: 'M', name: 'Mark', value: 1797 },
+        { abbr: 'J', name: 'Jeff', value: 1768 },
+        { abbr: 'M', name: 'Mark', value: 1814 },
         { abbr: 'G', name: 'Gerry', value: 1719 },
         { abbr: 'T', name: 'Tim', value: 1910 },
       ],
@@ -164,7 +164,7 @@ export const BETS: Bet[] = [
       kind: 'seesaw',
       unit: 'pts',
       left: { players: [{ abbr: 'DJM', name: 'DJ Moore', value: 120 }] },
-      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 119 }] },
+      right: { players: [{ abbr: 'DIG', name: 'Stefon Diggs', value: 128 }] },
     },
   },
   {
@@ -209,7 +209,8 @@ export const BETS: Bet[] = [
     stake: 10,
     for: ['Gerry'],
     against: ['Mark'],
-    result: null,
+    // Final: Mark 171, Gerry 127. The title did not happen.
+    result: 'against',
     progress: {
       kind: 'lineup',
       unit: 'pts',
@@ -241,8 +242,7 @@ export const BETS: Bet[] = [
           { slot: 'WR', name: 'Caleb Douglas', points: 5 },
           { slot: 'TE', name: 'George Kittle', points: 19 },
           { slot: 'FLEX', name: 'Emmett Johnson', points: 28 },
-          // Cincinnati at Washington on Monday night; he has not played yet.
-          { slot: 'FLEX', name: 'Tee Higgins', points: 0 },
+          { slot: 'FLEX', name: 'Tee Higgins', points: 17 },
           { slot: 'K', name: "Ka'imi Fairbairn", points: 6 },
           { slot: 'D/ST', name: 'Denver Broncos', points: 28 },
         ],

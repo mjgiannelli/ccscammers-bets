@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import type { Week } from '../bets/week';
 
@@ -9,8 +9,13 @@ export function WeekSummary({ week }: { week: Week }) {
   const [collapsed, setCollapsed] = useState(() => readCollapsed(id));
 
   // A redeploy can swap the write-up under an open page. Re-reading on the id
-  // reopens the section, same as a fresh visit would.
-  useEffect(() => setCollapsed(readCollapsed(id)), [id]);
+  // reopens the section, same as a fresh visit would. Adjusted during render
+  // rather than in an effect, so the stale state never gets painted first.
+  const [knownId, setKnownId] = useState(id);
+  if (knownId !== id) {
+    setKnownId(id);
+    setCollapsed(readCollapsed(id));
+  }
 
   if (week.summary.length === 0) return null;
 
